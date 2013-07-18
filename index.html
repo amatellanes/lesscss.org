@@ -259,11 +259,9 @@ h2 {
 </table>
 
 
-<h2>Nested Rules</h2>
+<h2>Reglas internas</h2>
 
-<p>Rather than constructing long selector names to specify inheritance,
-in Less you can simply nest selectors inside other selectors.
-This makes inheritance clear and style sheets shorter.</p>
+<p>En vez de escribir selectores con nombres largos ara especificar herencia, en Less puedes simplemente anidar selectores dentro de otros. Ésto hace la herencia más clara y disminuir el tamaño de la hoja de estilo.</p>
 
 <table class="code-example" cellpadding="0">
   <tr><td>
@@ -285,7 +283,7 @@ This makes inheritance clear and style sheets shorter.</p>
 </code></pre></td>
 
 <td>
-  <pre class="css-output"><code>/* Compiled CSS */
+  <pre class="css-output"><code>/* CSS compilado */
 
 #header h1 {
   font-size: 26px;
@@ -306,14 +304,9 @@ This makes inheritance clear and style sheets shorter.</p>
 </table>
 
 
-<h2>Functions &amp; Operations</h2>
+<h2>Funciones &amp; Operaciones</h2>
 
-<p>Are some elements in your style sheet proportional to other elements?
-Operations let you add, subtract, divide and multiply property values and colors,
-giving you the power to create complex relationships between properties. Operations
-should only be performed within parentheses in order to ensure compatibility with CSS.
-Functions map one-to-one with JavaScript code, allowing you to manipulate values however
-you want.</p>
+<p>¿Algún elemento en tu hoja de estilo depende de otros elementos? Las operacion te permiten sumar, restar, multiplicar y dividir los vaalores de las propiedades y colores, dándote el poder de crear relaciones complejas entre propiedades. Las operaciones deberían estar definidas entre paréntesis para asegurar la compatibilidad con CSS. Las funciones se corresponde a funciones JavaScript, permitiéndote modificar valores como tu quieras.</p>
 
 <table class="code-example" cellpadding="0">
   <tr><td>
@@ -337,7 +330,7 @@ you want.</p>
 </code></pre></td>
 
 <td>
-  <pre class="css-output"><code>/* Compiled CSS */
+  <pre class="css-output"><code>/* CSS compilado */
 
 #header {
   color: #333;
@@ -359,39 +352,38 @@ you want.</p>
 
 <section id="usage" class="page page-dark">
   <div class="content">
-    <h1>Client-side usage</h1>
+    <h1>Uso desde el lado del cliente</h1>
 
-<p>Client-side is the easiest way to get started and good for developing your LESS. For production and especially
-if performance is important, we recommend pre-compiling using node or one of the many third party tools.</p>
+<p>La manera más fácil de usar LESS es desde el lado del cliente. En producción y especialmente si el rendimiento es importante, recomendamos pre-compilar el código usando node o alguna otra herramienta.</p>
 
-<p>Link your <code>.less</code> stylesheets with the <code>rel</code> set to &ldquo;<code>stylesheet/less</code>&rdquo;:</p>
+<p>Enlaza tu hoja de estilo <code>.less</code> con el atributo <code>rel</code> con el valor &ldquo;<code>stylesheet/less</code>&rdquo;:</p>
 
 <pre><code>&lt;link rel="stylesheet/less" type="text/css" href="styles.less" /&gt;
 </code></pre>
 
-<p>Then download <code>less.js</code> from the top of the page, and include it in the <code>&lt;head&gt;</code> element of your page, like so:</p>
+<p>Luego descarga el fichero <code>less.js</code> desde el enlace situado al inicio de la página, e inclúyelo en el elemento <code>&lt;head&gt;</code> de tu página, tal que así:</p>
 
 <pre><code>&lt;script src="less.js" type="text/javascript"&gt;&lt;/script&gt;
 </code></pre>
 
-<p>Make sure you include your stylesheets <em>before</em> the script.</p>
+<p>Asegúrate de incluir tus hojas de estilo <em>antes</em> del script.</p>
 
-<p>You can set options by setting things on a global LESS object before the script. E.g.</p>
+<p>Puedes seleccionar opciones usando un objeto global LESS antes del script. Por ejemplo:</p>
 
 <pre><code>&lt;script type="text/javascript"&gt;
     less = {
-        env: "development", // or "production"
-        async: false,       // load imports async
-        fileAsync: false,   // load imports async when in a page under
-                            // a file protocol
-        poll: 1000,         // when in watch mode, time in ms between polls
-        functions: {},      // user functions, keyed by name
-        dumpLineNumbers: "comments", // or "mediaQuery" or "all"
-        relativeUrls: false,// whether to adjust url's to be relative
-                            // if false, url's are already relative to the
-                            // entry less file
-        rootpath: ":/a.com/"// a path to add on to the start of every url
-                            //resource
+        env: "development", // o "production"
+        async: false,       // carga los imports de manera asíncrona
+        fileAsync: false,   // carga los imports de manera asíncrona cuando una página usa
+        //un protocolo de archivos
+        poll: 1000,         // cuando está activado el watch mode, tiempo en ms entra polls
+        functions: {},      // funciones del usuario, user functions, tecleadas por nombre
+        dumpLineNumbers: "comments", // o "mediaQuery" o "all"
+        relativeUrls: false,// ajustar las urls's para que sean relativas
+                            // si false, las url's serán ya relativas para el
+                            // fichero less de entrada
+        rootpath: ":/a.com/"// una ruta para añadir al comienzo de cada una de las 
+        // urls
     };
 &lt;/script&gt;
 &lt;script src="less.js" type="text/javascript"&gt;&lt;/script&gt;
@@ -399,15 +391,13 @@ if performance is important, we recommend pre-compiling using node or one of the
 
 <h2>Watch mode</h2>
 
-<p><em>Watch mode</em> is a client-side feature which enables your styles to refresh automatically as they are changed.</p>
+<p><em>Watch mode</em> es una característica del lado del cliente que habilita que tus estilos se actualicen automáticamente cuando son modificados.</p>
 
-<p>To enable it, append &lsquo;<code>#!watch</code>&rsquo; to the browser URL, then refresh the page. Alternatively, you can
-run <code>less.watch()</code> from the console.</p>
+<p>Para habilitarlo, To enable it, añade &lsquo;<code>#!watch</code>&rsquo; a la URL del navegador, luego recarga la página. O bien, puedes ejecutar la función <code>less.watch()</code> desde la consola.</p>
 
-<h2>Modify variables</h2>
+<h2>Modificar variables</h2>
 
-<p><em>modifyVars</em> enables modification of LESS variables in run-time. When called with new values, the LESS file
-is recompiled without reloading. Simple basic usage:</p>
+<p><em>modifyVars</em> habilita la modificación de variables LESS en tiempo de ejecución. Cuando se ejecuta indicando nuevos valores, el fichero LESS es recompilado sin tener que recargar la página. Un ejemplo simple sería:</p>
 
 <pre><code>less.modifyVars({
     '@buttonFace': '#5B83AD',
@@ -415,45 +405,42 @@ is recompiled without reloading. Simple basic usage:</p>
 });
 </code></pre>
 
-<h2>Debugging</h2>
+<h2>Depurando</h2>
 
-<p>It is possible to output rules in your CSS which allow tools to locate the source of the rule.</p>
+<p>Es posible obtener las reglas de salida en tu CSS lo que permite localizar la fuente de la regla.</p>
 
-<p>Either specify the option <code>dumpLineNumbers</code> as above or add <code>!dumpLineNumbers:mediaQuery</code> to the url.</p>
+<p>Tanto si especificas la opción <code>dumpLineNumbers</code> como hemos visto anteriormente como si añades <code>!dumpLineNumbers:mediaQuery</code> a la url.</p>
 
-<p>You can use the &ldquo;comments&rdquo; option with <a href="https://addons.mozilla.org/en-us/firefox/addon/fireless/">FireLESS</a> and
-the &ldquo;mediaQuery&rdquo; option with FireBug/Chrome dev tools (it is identical to the SCSS media query debugging format).</p>
+<p>Puedes usar la opción &ldquo;comments&rdquo; junto con <a href="https://addons.mozilla.org/en-us/firefox/addon/fireless/">FireLESS</a> y la opción &ldquo;mediaQuery&rdquo; junto con las herramiento de desarrollo FireBug/Chrome (similar a la depuración de SCSS media query).</p>
 
-<h1>Server-side usage</h1>
+<h1>Uso desde el lado del servidor</h1>
 
-<h2>Installation</h2>
+<h2>Instalación</h2>
 
-<p>The easiest way to install LESS on the server, is via <a href="http://github.com/isaacs/npm">npm</a>, the node package manager, as so:</p>
+<p>La manera más facil de instalar LESS en un servidor, es via <a href="http://github.com/isaacs/npm">npm</a>, el gestor de paquetes de node, tal que así:</p>
 
 <pre><code>$ npm install -g less
 </code></pre>
 
-<h2>Command-line usage</h2>
+<h2>Uso de la línea de comando</h2>
 
-<p>Once installed, you can invoke the compiler from the command-line, as such:</p>
+<p>Una vez instalado. puedes invocar al compilador desde la líne de comando de la siguiente manera:</p>
 
 <pre><code>$ lessc styles.less
 </code></pre>
 
-<p>This will output the compiled CSS to <code>stdout</code>, you may then redirect it to a file of your choice:</p>
+<p>Producirá la salidad del código CSS compilado en <code>stdout</code>, puedes redirigir la salida a cualquier fichero que desees:</p>
 
 <pre><code>$ lessc styles.less &gt; styles.css
 </code></pre>
 
-<p>To output minified CSS, simply pass the <code>-x</code> option. If you would like more involved minification,
-the <a href="http://developer.yahoo.com/yui/compressor/css.html">YUI CSS Compressor</a> is also available with
-the <code>--yui-compress</code> option.</p>
+<p>Para obtener el código CSS comprimido (<em>minified</em>) simplemente utiliza la opción <code>-x</code>. Tambien puedes usar la herramienta <a href="http://developer.yahoo.com/yui/compressor/css.html">YUI CSS Compressor</a> está tambien disponible con la opción <code>--yui-compress</code>.</p>
 
-<p>To see all the command line options run lessc without parameters.</p>
+<p>Para consultar todas las opciones de la línea de comando ejecuta el comando lessc sin ningín parámetro.</p>
 
-<h2>Usage in Code</h2>
+<h2>Uso en el código</h2>
 
-<p>You can invoke the compiler from node, as such:</p>
+<p>Puedes invocar al compilador desde node de la siguiente manera:</p>
 
 <pre><code>var less = require('less');
 
@@ -462,14 +449,14 @@ less.render('.class { width: (1 + 1) }', function (e, css) {
 });
 </code></pre>
 
-<p>which will output</p>
+<p>cuyo resultado será</p>
 
 <pre><code>.class {
   width: 2;
 }
 </code></pre>
 
-<p>you may also manually invoke the parser and compiler:</p>
+<p>también puedes invocar manualmente al parseador y al compilador:</p>
 
 <pre><code>var parser = new(less.Parser);
 
@@ -479,9 +466,9 @@ parser.parse('.class { width: (1 + 1) }', function (err, tree) {
 });
 </code></pre>
 
-<h2>Configuration</h2>
+<h2>Configuración</h2>
 
-<p>You may pass some options to the compiler:</p>
+<p>Puedes definir algunos parámetros del compilador:</p>
 
 <pre><code>var parser = new(less.Parser)({
     paths: ['.', './lib'], // Specify search paths for @import directives
@@ -493,25 +480,25 @@ parser.parse('.class { width: (1 + 1) }', function (e, tree) {
 });
 </code></pre>
 
-<h2>Third Party Tools</h2>
+<h2>Otras herramientas</h2>
 
-<p>There are a selection of tools available to run in your particular environment and these are documented in the Github wiki.</p>
+<p>Existe una selección de herramientas disponibles para la ejecución en tu entorno particular y todo ello está documentado en Github wiki.</p>
 
-<p><a href="https://github.com/cloudhead/less.js/wiki/Command-Line-use-of-LESS">Command Line Tools</a></p>
+<p><a href="https://github.com/cloudhead/less.js/wiki/Command-Line-use-of-LESS">Herramientas de línea de comando</a></p>
 
-<p><a href="https://github.com/cloudhead/less.js/wiki/GUI-compilers-that-use-LESS.js">GUI Tools</a></p>
+<p><a href="https://github.com/cloudhead/less.js/wiki/GUI-compilers-that-use-LESS.js">Herramientas de interfaz gráfico</a></p>
 
   </div>
 </section>
 
 <section id="docs" class="page page-light">
-  <h1>The Language</h1>
+  <h1>El lenguaje</h1>
   <div class="content">
-    <p>As an extension to CSS, LESS is not only backwards compatible with CSS, but the extra features it adds use <em>existing</em> CSS syntax. This makes learning LESS a <em>breeze</em>, and if in doubt, lets you fall back to CSS.</p>
+    <p>Al ser una extensión de CSS, LESS no es solo retrocompatible con CSS, sino que proporciona características extras usando sintaxis CSS. Ésto hace que aprender LESS sea muy sencillo, y si tienes dudas, siempre puedes recurrir a CSS.</p>
 
 <h2>Variables</h2>
 
-<p>These are pretty self-explanatory:</p>
+<p>Se explican por si solas:</p>
 
 <pre><code>@nice-blue: #5B83AD;
 @light-blue: (@nice-blue + #111);
@@ -519,26 +506,26 @@ parser.parse('.class { width: (1 + 1) }', function (e, tree) {
 #header { color: @light-blue; }
 </code></pre>
 
-<p>Outputs:</p>
+<p>Salida:</p>
 
 <pre><code>#header { color: #6c94be; }
 </code></pre>
 
-<p>It is also possible to define variables with a variable name:</p>
+<p>También es posible definir cariables con un nombre de variable:</p>
 
 <pre><code>@fnord: "I am fnord.";
 @var: 'fnord';
 content: @@var;
 </code></pre>
 
-<p>Which compiles to:</p>
+<p>Cuya salida será:</p>
 
 <pre><code>content: "I am fnord.";
 </code></pre>
 
-<p>When defining a variable twice, the last definition of the variable is used, searching from the current scope upwards. This is similar to css itself where the last property inside a definition is used to determine the value.</p>
+<p>Cuando definimos una variable dos veces, se usará la última definición de la variable, buscando desde el ámbito actual hacia arriba. Similar a lo que ocurre en el propio CSS donde la última propiedad dentro de una definición es la que determina el valor.</p>
 
-<p>For instance:</p>
+<p>Por ejemplo:</p>
 
 <pre><code>@var: 0;
 .class1 {
@@ -552,7 +539,7 @@ content: @@var;
 }
 </code></pre>
 
-<p>Compiles to:</p>
+<p>El resultado será:</p>
 
 <pre><code>.class1 .class {
   three: 3;
@@ -562,9 +549,9 @@ content: @@var;
 }
 </code></pre>
 
-<p>Variables are lazy loaded and do not have to be declared before being used.</p>
+<p>Las variables son cargadas de manera <em>lazy</em> y no tienen que ser declaradas antes de ser usadas.</p>
 
-<p>Valid less snippet:</p>
+<p>Código less válido:</p>
 
 <pre><code>lazy-eval {
   width: @var;
@@ -574,7 +561,7 @@ content: @@var;
 @a: 9%;
 </code></pre>
 
-<p>this is valid less too:</p>
+<p>también es válido lo siguiente:</p>
 
 <pre><code>.lazy-eval-scope {
   width: @var;
@@ -594,7 +581,7 @@ content: @@var;
 
 <h2>Mixins</h2>
 
-<p>In LESS, it is possible to include a bunch of properties from one ruleset into another ruleset. So say we have the following class:</p>
+<p>En LESS, es posible incluir un conjunto de propiedades desde una regla a otra. De esta manera, tendremos la siguiente clase:</p>
 
 <pre><code>.bordered {
   border-top: dotted 1px black;
@@ -602,8 +589,7 @@ content: @@var;
 }
 </code></pre>
 
-<p>And we want to use these properties inside other rulesets. Well, we just have to drop in the name of
-the class in any ruleset we want to include its properties, like so:</p>
+<p>Si queremos incluir las propiedades de esta clase en otra regla tendremos que incluir el nombre de la clase dentro de la regla en la que queremos incluir las propiedades, tal que:</p>
 
 <pre><code>#menu a {
   color: #111;
@@ -615,7 +601,7 @@ the class in any ruleset we want to include its properties, like so:</p>
 }
 </code></pre>
 
-<p>The properties of the <code>.bordered</code> class will now appear in both <code>#menu a</code> and <code>.post a</code>:</p>
+<p>Las propiedades de la clase <code>.bordered</code> aparecen ahora en ambas <code>#menu a</code> y <code>.post a</code>:</p>
 
 <pre><code>#menu a {
   color: #111;
@@ -629,13 +615,13 @@ the class in any ruleset we want to include its properties, like so:</p>
 }
 </code></pre>
 
-<p>Any CSS <em>class</em> or <em>id</em> ruleset can be mixed-in that way.</p>
+<p>Cualquier <em>clase</em> CSS o <em>id</em> puede ser incluida dentro de otra regla de cualquier manera.</p>
 
-<p>Note: Variables are also mixed in, so variables from a mixin will be placed into the current scope. This is contentious and may change in the future.</p>
+<p>Nota: Las variables tambien puede ser mezcladas, de esta menra las variables de un <em>mixin</em> serán colocadas en el ámbito actual. Este comportamiento puede ser modificado en el futuro.</p>
 
-<h2>Parametric Mixins</h2>
+<h2>Mixins Paramétricos</h2>
 
-<p>LESS has a special type of ruleset which can be mixed in like classes, but accepts parameters. Here&rsquo;s the canonical example:</p>
+<p>LESS tiene un tipo especial de regla que puede ser mezcladas como si fuesen clases, pueden además aceptar parámetros. Aquí un ejemplo sencillo:</p>
 
 <pre><code>.border-radius (@radius) {
   border-radius: @radius;
@@ -644,7 +630,7 @@ the class in any ruleset we want to include its properties, like so:</p>
 }
 </code></pre>
 
-<p>And here&rsquo;s how we can mix it into various rulesets:</p>
+<p>Y aquí vemos como podemos usarla en varias reglas con diferentes parámetros:</p>
 
 <pre><code>#header {
   .border-radius(4px);
@@ -654,7 +640,7 @@ the class in any ruleset we want to include its properties, like so:</p>
 }
 </code></pre>
 
-<p>Parametric mixins can also have default values for their parameters:</p>
+<p>Los <em>mixins</em> paramétricos pueden definir valores por defecto para sus parámetros:</p>
 
 <pre><code>.border-radius (@radius: 5px) {
   border-radius: @radius;
@@ -663,17 +649,16 @@ the class in any ruleset we want to include its properties, like so:</p>
 }
 </code></pre>
 
-<p>We can invoke it like this now:</p>
+<p>Ahora podemos invocarlo de la siguiente manera:</p>
 
 <pre><code>#header {
   .border-radius;
 }
 </code></pre>
 
-<p>And it will include a 5px border-radius.</p>
+<p>De esta manera incluiremos la propiedad 5px border-radius.</p>
 
-<p>You can also use parametric mixins which don&rsquo;t take parameters. This is useful if you want to hide the ruleset from the CSS output,
-but want to include its properties in other rulesets:</p>
+<p>Además, podemos usar mixins paramétricos que no toman parámetros. Esto es útil si quieres ocultar la regla en el CSS generado, pero si incluir sus propiedade en otras reglas:</p>
 
 <pre><code>.wrap () {
   text-wrap: wrap;
@@ -685,7 +670,7 @@ but want to include its properties in other rulesets:</p>
 pre { .wrap }
 </code></pre>
 
-<p>Which would output:</p>
+<p>La salida generada será:</p>
 
 <pre><code>pre {
   text-wrap: wrap;
@@ -695,21 +680,21 @@ pre { .wrap }
 }
 </code></pre>
 
-<h3>Mixins With Multiple Parameters</h3>
+<h3>Mixins Con Múltiples Parámetros</h3>
 
-<p>Parameters are either <em>semicolon</em> or <em>comma</em> separated. It is recommended to use <em>semicolon</em>. The symbol comma has double meaning: it can be interpreted either as a mixin parameters separator or css list separator.</p>
+<p>Los parámetros pueden ir separados por <em>punto y coma</em> o <em>coma</em>. Se recomienda el uso del <em>punto y coma</em>. La coma tiene un doble significado: puede ser interpretado como el separador de los parámetros de un <em>mixin</em> o el separador de una lista css.</p>
 
-<p>Using comma as mixin separator makes it impossible to create comma separated lists as an argument. On the other hand, if the compiler sees at least one semicolon inside mixin call or declaration, it assumes that arguments are separated by semicolons and all commas belong to css lists:</p>
+<p>Usar la coma como separador del <em>mixin</em> impide utilizar una lista separada por comas como un argumento. Por otra parte, cuando el compilador ve al menos un punto y coma dentro de la llamada del <em>mixin</em> , asume que los argumentos estarán separados por puntos y comas y todas la comas pertenecen a listas css:</p>
 
 <ul>
-<li>two arguments and each contains comma separated list: <code>.name(1, 2, 3; something, else)</code>,</li>
-<li>three arguments and each contains one number: <code>.name(1, 2, 3)</code>,</li>
-<li>use dummy semicolon to create mixin call with one argument containing comma separated css list: <code>.name(1, 2, 3;)</code>,</li>
-<li>comma separated default value: <code>.name(@param1: red, blue;)</code>.</li>
+<li>dos argumentos y cada uno contienen una lista separadas por comas: <code>.name(1, 2, 3; something, else)</code>,</li>
+<li>tres argumentos y cada uno contienen un número: <code>.name(1, 2, 3)</code>,</li>
+<li>usar un punto y coma inútil para crear una llamada al <em>mixin</em> con un argumento que contiene una lista deparada por comas: <code>.name(1, 2, 3;)</code>,</li>
+<li>valor por defecto separado por comas: <code>.name(@param1: red, blue;)</code>.</li>
 </ul>
 
 
-<p>It is legal to define multiple mixins with the same name and number of parameters. Less will use properties of all that can apply. If you used the mixin with one parameter e.g. <code>.mixin(green);</code>, then properties of all mixins with exactly one mandatory parameter will be used:</p>
+<p>Es legal definir múltiples <em>mixins</em> con el mismo nombre y el mismo número de parámetros. Less usará las propiedades de todos los <em>mixins</em> que puedaan aplicarse. Si usas un <code>.mixin(green);</code> de un parámetro, por ejemplo .mixin(green);, luego las propiedades de todos los mixins que tengan exactamente un parámetro obligatorio serán usados:</p>
 
 <pre><code>.mixin(@color) {
   color-1: @color;
@@ -728,7 +713,7 @@ pre { .wrap }
 }
 </code></pre>
 
-<p>compiles into:</p>
+<p>el código generado será:</p>
 
 <pre><code>.some .selector div {
   color-1: #008000;
@@ -737,10 +722,9 @@ pre { .wrap }
 }
 </code></pre>
 
-<h3>The <code>@arguments</code> variable</h3>
+<h3>La variable <code>@arguments</code></h3>
 
-<p><code>@arguments</code> has a special meaning inside mixins, it contains all the arguments passed, when the mixin was called. This is useful
-if you don&rsquo;t want to deal with individual parameters:</p>
+<p><code>@arguments</code> tiene un significado especial dentro de los <em>mixins</em>, contiene todos los argumentos pasados, cuando el <em>mixin</em> fue invocado. Es útil si no quieres trabajar con parámetros individuales:</p>
 
 <pre><code>.box-shadow (@x: 0; @y: 0; @blur: 1px; @color: #000) {
   box-shadow: @arguments;
@@ -750,37 +734,37 @@ if you don&rsquo;t want to deal with individual parameters:</p>
 .box-shadow(2px; 5px);
 </code></pre>
 
-<p>Which results in:</p>
+<p>Cuyo resultado es:</p>
 
 <pre><code>  box-shadow: 2px 5px 1px #000;
   -moz-box-shadow: 2px 5px 1px #000;
   -webkit-box-shadow: 2px 5px 1px #000;
 </code></pre>
 
-<h3>Advanced arguments and the <code>@rest</code> variable</h3>
+<h3>Argumentos adelantados y la variable<code>@rest</code></h3>
 
-<p>You can use <code>...</code> if you want your mixin to take a variable number of arguments. Using this after a variable name will assign those arguments to the variable.</p>
+<p>Puedes usar <code>...</code> si quieres que el <em>mixin</em> tenga un número variable de argumentos. Usándolo después del nombre de una variable, se incluirá la variable a estos argumentos.</p>
 
 <pre><code>.mixin (...) {        // matches 0-N arguments
-.mixin () {           // matches exactly 0 arguments
-.mixin (@a: 1) {      // matches 0-1 arguments
-.mixin (@a: 1; ...) { // matches 0-N arguments
-.mixin (@a; ...) {    // matches 1-N arguments
+.mixin () {           // toma exáctamente 0 argumentos
+.mixin (@a: 1) {      // toma entre 0-1 argumentos
+.mixin (@a: 1; ...) { // toma entre 0-N argumentos
+.mixin (@a; ...) {    // toma entre 1-N argumentos
 </code></pre>
 
-<p>Furthermore:</p>
+<p>Además:</p>
 
 <pre><code>.mixin (@a; @rest...) {
-   // @rest is bound to arguments after @a
-   // @arguments is bound to all arguments
+   // @rest hace referencia a los argumentos definidos después de @a
+   // @arguments hace referencia a todos los argumentos
 }
 </code></pre>
 
-<h2>The Keyword !important</h2>
+<h2>La palabra clave !important</h2>
 
-<p>Use the !important keyword after mixin call to mark all properties brought by it as !important:</p>
+<p>Usa la palabra clave !important después de la invocación del <em>mixin</em> para marcar todas las propiedades como importante:</p>
 
-<p>Sample input:</p>
+<p>Entrada:</p>
 
 <pre><code>.mixin (@a: 0) {
   border: @a;
@@ -794,7 +778,7 @@ if you don&rsquo;t want to deal with individual parameters:</p>
 }
 </code></pre>
 
-<p>compiled into:</p>
+<p>generará:</p>
 
 <pre><code>.unimportant {
   border: 1;
@@ -806,11 +790,9 @@ if you don&rsquo;t want to deal with individual parameters:</p>
 }
 </code></pre>
 
-<h2>Pattern-matching and Guard expressions</h2>
+<h2>Patrones y <em>Guard expressions</em></h2>
 
-<p>Sometimes, you may want to change the behaviour of a mixin,
-based on the parameters you pass to it. Let&rsquo;s start with something
-basic:</p>
+<p>Algunas veces, puedes querer cambiar el comportamiento de un <em>mixin</em> basándote en los parámetros que le pasas. Vamos a comenzar por un ejemplo sencillo:</p>
 
 <pre><code>.mixin (@s; @color) { ... }
 
@@ -819,8 +801,7 @@ basic:</p>
 }
 </code></pre>
 
-<p>Now let&rsquo;s say we want <code>.mixin</code> to behave differently, based on the value of <code>@switch</code>,
-we could define <code>.mixin</code> as such:</p>
+<p>Ahora supongamos que queremos que <code>.mixin</code> se comporte de manera diferente dependiendo del valor de <code>@switch</code>, podríamos definir <code>.mixin</code> de la siguiente manera:</p>
 
 <pre><code>.mixin (dark; @color) {
   color: darken(@color, 10%);
@@ -833,7 +814,7 @@ we could define <code>.mixin</code> as such:</p>
 }
 </code></pre>
 
-<p>Now, if we run:</p>
+<p>Si ejecutamos a continuación:</p>
 
 <pre><code>@switch: light;
 
@@ -842,7 +823,7 @@ we could define <code>.mixin</code> as such:</p>
 }
 </code></pre>
 
-<p>We will get the following CSS:</p>
+<p>Obtendremos la siguiente salida:</p>
 
 <pre><code>.class {
   color: #a2a2a2;
@@ -850,15 +831,14 @@ we could define <code>.mixin</code> as such:</p>
 }
 </code></pre>
 
-<p>Where the color passed to <code>.mixin</code> was lightened. If the value of <code>@switch</code> was <code>dark</code>,
-the result would be a darker color.</p>
+<p>Donde el color pasado en <code>.mixin</code> fue aclarado. Si el valor de <code>@switch</code> fuese <code>dark</code>, el resultado sería un color más oscuro.</p>
 
-<p>Here&rsquo;s what happened:</p>
+<p>Lo que ha pasado ha sido:</p>
 
 <ul>
-<li>The first mixin definition didn&rsquo;t match because it expected <code>dark</code> as the first argument.</li>
-<li>The second mixin definition matched, because it expected <code>light</code>.</li>
-<li>The third mixin definition matched because it expected any value.</li>
+<li>La primera definición del <em>mixin</em> no encaja porque espera el valor <code>dark</code> como primer argumento.</li>
+<li>La segunda definición encaja, porque espera el valor <code>light</code>.</li>
+<li>La tercera definición también encaja, ya que espera cualquier valor.</li>
 </ul>
 
 

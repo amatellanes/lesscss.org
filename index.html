@@ -842,10 +842,9 @@ pre { .wrap }
 </ul>
 
 
-<p>Only mixin definitions which matched were used. Variables match and bind to any value.
-Anything other than a variable matches only with a value equal to itself.</p>
+<p>Solo se utilizan los <em>mixins</em> cuya definición encaja con los parámetros pasados. Las variables encajan y se vinculan a cualquier valor. Cualquier otra cosa que encaje con una variable igual a si mismo.</p>
 
-<p>We can also match on arity, here&rsquo;s an example:</p>
+<p>Tambien puede coincidir en aridad, aquí un ejemplo:</p>
 
 <pre><code>.mixin (@a) {
   color: @a;
@@ -855,19 +854,16 @@ Anything other than a variable matches only with a value equal to itself.</p>
 }
 </code></pre>
 
-<p>Now if we call <code>.mixin</code> with a single argument, we will get the output of the first definition,
-but if we call it with <em>two</em> arguments, we will get the second definition, namely <code>@a</code> faded to <code>@b</code>.</p>
+<p>Ahora si llamamos a <code>.mixin</code> con un único argumento, conseguiremos la salida obtenida en la primera definición, mientras que si lo llamamos con dos argumentos, obtendremos la segunda definición, with a single argument, we will get the output of the first definition,
+but if we call it with <em>two</em> arguments, we will get the second definition, específicamente <code>@a</code> <em>faded</em> a <code>@b</code>.</p>
 
-<h3>Guards</h3>
+<h3>Centinelas</h3>
 
-<p>Guards are useful when you want to match on <em>expressions</em>, as opposed to simple values or arity. If you are
-familiar with functional programming, you have probably encountered them already.</p>
+<p>Los centinelas son usado cuando quieres coincidencias por <em>expresiones</em>, al contrario que por valores simple o por aridad. Si estás familirarizado con la progrmaación funcional, lo habrás estudiado ya.</p>
 
-<p>In trying to stay as close as possible to the declarative nature of CSS, LESS has opted to implement
-conditional execution via <strong>guarded mixins</strong> instead of if/else statements, in the vein of <code>@media</code>
-query feature specifications.</p>
+<p>Para no alejarse de la naturaleza declarativa de CSS, LESS opta por implementar las ejecuciones condicionales usando <stron><em>mixins<em> centinelas</strong> en vez de sentencias if/else, al igual que ocure con la opción <code>@media</code>.</p>
 
-<p>Let&rsquo;s start with an example:</p>
+<p>Vamos a ver un ejemplo:</p>
 
 <pre><code>.mixin (@a) when (lightness(@a) &gt;= 50%) {
   background-color: black;
@@ -880,14 +876,13 @@ query feature specifications.</p>
 }
 </code></pre>
 
-<p>The key is the <strong><code>when</code></strong> keyword, which introduces a guard sequence (here with only one guard). Now if we run the following
-code:</p>
+<p>La clave es la palabra <strong><code>when</code></strong>, que precede a un centinela (en esta ocasión con una única condición). Si ejecutamos el código siguiente:</p>
 
 <pre><code>.class1 { .mixin(#ddd) }
 .class2 { .mixin(#555) }
 </code></pre>
 
-<p>Here&rsquo;s what we&rsquo;ll get:</p>
+<p>Obtendremos la siguiente salida:</p>
 
 <pre><code>.class1 {
   background-color: black;
@@ -899,27 +894,25 @@ code:</p>
 }
 </code></pre>
 
-<p>The full list of comparison operators usable in guards are: <strong><code>&gt; &gt;= = =&lt; &lt;</code></strong>. Additionally, the keyword <code>true</code>
-is the only truthy value, making these two mixins equivalent:</p>
+<p>La lista completa de operaciones de comparación que se pueden usar son: <strong><code>&gt; &gt;= = =&lt; &lt;</code></strong>. Además, la palabra clave <code>true</code> es el único cuyo valor es verdad, haciendo las siguientes dos <em>mixins</em> equivalentes:</p>
 
 <pre><code>.truth (@a) when (@a) { ... }
 .truth (@a) when (@a = true) { ... }
 </code></pre>
 
-<p>Any value other than the keyword <code>true</code> is falsy:</p>
+<p>Cualquier otro valor que no sea la palabra clave <code>true</code> es falso:</p>
 
 <pre><code>.class {
   .truth(40); // Will not match any of the above definitions.
 }
 </code></pre>
 
-<p>Guards can be separated with a comma &lsquo;<code>,</code>&rsquo;&ndash;if any of the guards evaluates to true, it&rsquo;s
-considered as a match:</p>
+<p>Podemos separar varias condiciones separadas por comas &lsquo;<code>,</code>&rsquo;&ndash;si cualquier otra condición es evaluada como true, se considerará toda la condición como true:</p>
 
 <pre><code>.mixin (@a) when (@a &gt; 10), (@a &lt; -10) { ... }
 </code></pre>
 
-<p>Note that you can also compare arguments with each other, or with non-arguments:</p>
+<p>Sate cuenta que también puedes comparar argumentos con otros o con otros valores:</p>
 
 <pre><code>@media: mobile;
 
@@ -930,13 +923,13 @@ considered as a match:</p>
 .max (@a; @b) when (@a &lt; @b) { width: @b }
 </code></pre>
 
-<p>Lastly, if you want to match mixins based on value type, you can use the <em>is*</em> functions:</p>
+<p>Por último, si quieres conocer el tipo de algún valor, puedes usar las funciones <em>is*</em>:</p>
 
 <pre><code>.mixin (@a; @b: 0) when (isnumber(@b)) { ... }
 .mixin (@a; @b: black) when (iscolor(@b)) { ... }
 </code></pre>
 
-<p>Here are the basic type checking functions:</p>
+<p>Aquí están las funciones que comprueban los tipos básicos:</p>
 
 <ul>
 <li><code>iscolor</code></li>
@@ -947,7 +940,7 @@ considered as a match:</p>
 </ul>
 
 
-<p>If you want to check if a value, in addition to being a number, is in a specific unit, you may use one of:</p>
+<p>Si quieres comprobar si algún valor, además de ser número, está definido en una unidad específica, podrías usas una de las siguientes funciones:</p>
 
 <ul>
 <li><code>ispixel</code></li>
@@ -957,7 +950,7 @@ considered as a match:</p>
 </ul>
 
 
-<p>Last but not least, you may use the <strong><code>and</code></strong> keyword to provide additional conditions inside a guard:</p>
+<p>Por último pero no menos importante, puedes usar la palabra clave <strong><code>and</code></strong> para definir coindiciones adicionales dentro de un centinela:</p>
 
 <pre><code>.mixin (@a) when (isnumber(@a)) and (@a &gt; 0) { ... }
 </code></pre>
@@ -967,10 +960,9 @@ considered as a match:</p>
 <pre><code>.mixin (@b) when not (@b &gt; 0) { ... }
 </code></pre>
 
-<h2>Nested rules</h2>
+<h2>Reglas internas</h2>
 
-<p>LESS gives you the ability to use <em>nesting</em> instead of, or in combination with cascading.
-Lets say we have the following CSS:</p>
+<p>LESS te permite <em>anidar</Em> en vez de, o en combinación, con la cascada. Supongamos que tenemos el siguiente hoja CSS:</p>
 
 <pre><code>#header { color: black; }
 #header .navigation {
@@ -984,7 +976,7 @@ Lets say we have the following CSS:</p>
 }
 </code></pre>
 
-<p>In LESS, we can also write it this way:</p>
+<p>En LESS, podemos escribirlo de la siguiente manera:</p>
 
 <pre><code>#header {
   color: black;
@@ -999,7 +991,7 @@ Lets say we have the following CSS:</p>
 }
 </code></pre>
 
-<p>Or this way:</p>
+<p>O de esta manera:</p>
 
 <pre><code>#header        { color: black;
   .navigation  { font-size: 12px }
@@ -1009,12 +1001,11 @@ Lets say we have the following CSS:</p>
 }
 </code></pre>
 
-<p>The resulting code is more concise, and mimics the structure of your <code>DOM tree</code>.</p>
+<p>Es resultado es un código más conciso e imita mejor la estructura de tu <code>árblo DOM</code>.</p>
 
-<p>Notice the <code>&amp;</code> combinator - it&rsquo;s used when you want a nested selector to be concatenated to its parent selector, instead
-of acting as a descendant. This is especially important for pseudo-classes like <code>:hover</code> and <code>:focus</code>.</p>
+<p>Date cuenta que el combiandor <code>&amp;</code> es usado cuando quieres que tu selector anidado sea concatenado con el selector padre, en vez de actuar de una manera descendente. Es especialmente importante para las pseudo-clases como <code>:hover</code> y <code>:focus</code>.</p>
 
-<p>For example:</p>
+<p>Por ejemplo:</p>
 
 <pre><code>.bordered {
   &amp;.float {
@@ -1026,7 +1017,7 @@ of acting as a descendant. This is especially important for pseudo-classes like 
 }
 </code></pre>
 
-<p>Will output</p>
+<p>Obtendremos</p>
 
 <pre><code>.bordered.float {
   float: left;
@@ -1036,9 +1027,9 @@ of acting as a descendant. This is especially important for pseudo-classes like 
 }
 </code></pre>
 
-<h2>Nested Media Queries</h2>
+<h2><em>Media Queries</em> anidadas</h2>
 
-<p>Media queries can be nested in the same way as selectors e.g.</p>
+<p>Las <em>media queries</em> pueden ser anidadas de la misma forma qque los selectores, por ejemplo</p>
 
 <pre><code>.one {
     @media (width: 400px) {
@@ -1050,7 +1041,7 @@ of acting as a descendant. This is especially important for pseudo-classes like 
 }
 </code></pre>
 
-<p>Will output</p>
+<p>Obtendremos</p>
 
 <pre><code>@media (width: 400px) {
   .one {
@@ -1064,11 +1055,11 @@ of acting as a descendant. This is especially important for pseudo-classes like 
 }
 </code></pre>
 
-<h2>Advanced Usage of &amp;</h2>
+<h2>Uso anticipado de &amp;</h2>
 
-<p>The &amp; symbol can be used in selectors in order to reverse the ordering of the nesting and to multiply classes.</p>
+<p>El simbolo &amp; puede ser usado en selectores para invertir el orden del anidamiento y multiplicar las clases.</p>
 
-<p>For example:</p>
+<p>Por ejemplo:</p>
 
 <pre><code>.child, .sibling {
     .parent &amp; {
@@ -1080,7 +1071,7 @@ of acting as a descendant. This is especially important for pseudo-classes like 
 }
 </code></pre>
 
-<p>Will output</p>
+<p>Obtendremos</p>
 
 <pre><code>.parent .child,
 .parent .sibling {
@@ -1094,12 +1085,11 @@ of acting as a descendant. This is especially important for pseudo-classes like 
 }
 </code></pre>
 
-<p>You can also use &amp; in mixins in order to reference nesting that is outside of your mixin.</p>
+<p>También puedes usar &amp; en <em>mixins</em> para referenciar anidamiento que está fuera de la definición del <em>mixin</em>.</p>
 
-<h2>Operations</h2>
+<h2>Operaciones</h2>
 
-<p>Any number, color or variable can be operated on. Operations should be performed
-within parentheses. Here are a couple of examples:</p>
+<p>Se puede operar sobre cualquier número, color o variable. Las operaciones deberían ser definidad entre paréntesis. A continuación un par de ejemplos:</p>
 
 <pre><code>@base: 5%;
 @filler: (@base * 2);
@@ -1110,14 +1100,14 @@ background-color: (@base-color + #111);
 height: (100% / 2 + @filler);
 </code></pre>
 
-<p>The output is pretty much what you expect—LESS understands the difference between colors and units. If a unit is used in an operation, like in:</p>
+<p>La salida es mucho más simple de lo que cabe esperar—LESS entiende la diferencia entre colores y unidades. Si una unidad es usada en una operación, como aquí:</p>
 
 <pre><code>@var: (1px + 5);
 </code></pre>
 
-<p>LESS will use that unit for the final output—<code>6px</code> in this case.</p>
+<p>LESS usará esa unidad en el resultado final—<code>6px</code> en este caso.</p>
 
-<p>Extra parentheses are also authorized in operations:</p>
+<p>También se permite el uso de varios paréntesis en las operaciones:</p>
 
 <pre><code>width: ((@var + 5) * 2);
 </code></pre>

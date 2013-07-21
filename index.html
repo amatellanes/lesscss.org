@@ -90,7 +90,7 @@
         LESS puede ejecutarse tanto en el lado del servidor (usando <span>Node.js</span> y <span>Rhino</span>) como <span>del lado del cliente</span> (únicamente en navegadores modernos).
       </h3>
       <a id="download" href="https://raw.github.com/less/less.js/master/dist/less-1.4.1.min.js">
-        <img src="/images/download-button.png" />
+        <img src="/lesscss.org//images/download-button.png" />
       </a><div id="download-info">
       <div>version <code>1.4.1</code></div>
       <div><a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">registro de cambios</a></div>
@@ -1112,29 +1112,25 @@ height: (100% / 2 + @filler);
 <pre><code>width: ((@var + 5) * 2);
 </code></pre>
 
-<h2>Functions</h2>
+<h2>Funciones</h2>
 
-<p>LESS provides a variety of functions which transform colors, manipulate strings and do maths.
-They are documented fully in the function reference.</p>
+<p>LESS proporciona una gran variedad de funciones que transforman colores, manipulan cadenas de caracteres o realizan operaciones matemáticas. Todas están documentadas en la referencia de las funciones.</p>
 
-<p>Using them is pretty straightforward. The following example uses percentage to convert 0.5 to 50%,
-increases the saturation of a base color by 5% and then sets the background color to one that is lightened by
-25% and spun by 8 degrees:</p>
+<p>Su uso es baastante obvio. En el siguiente ejemplo se usa el método <em>percentage</em> para convertir el valor 0.5 en 50%, se incrementa la saturación de un color en un 5% y a continuación se selecciona un color de fondo que se ilumina un 25% y se modifica su perfil de color 8 grados:</p>
 
 <pre><code>@base: #f04615;
 @width: 0.5;
 
 .class {
-  width: percentage(0.5); // returns `50%`
+  width: percentage(0.5); // devuelve `50%`
   color: saturate(@base, 5%);
   background-color: spin(lighten(@base, 25%), 8);
 }
 </code></pre>
 
-<h2>Namespaces</h2>
+<h2>Espacio de nombres</h2>
 
-<p>Sometimes, you may want to group your variables or mixins, for organizational purposes, or just to offer some encapsulation.
-You can do this pretty intuitively in LESS—say you want to bundle some mixins and variables under <code>#bundle</code>, for later re-use, or for distributing:</p>
+<p>Algunas veces, podrías querer agrupar tus variables o <em>mixins</em>, por organización, o simplemente por encapsular ti código. Puedes hacerlo de una manera bastante intuitivo en LESSSometimes, supongamos que quieres agrupar algunos <em>mixins</em> y variables bajo <code>#bundle</code>, para luego reutilizarlo o distribuirlo:</p>
 
 <pre><code>#bundle {
   .button () {
@@ -1148,7 +1144,7 @@ You can do this pretty intuitively in LESS—say you want to bundle some mixins 
 }
 </code></pre>
 
-<p>Now if we want to mixin the <code>.button</code> class in our <code>#header a</code>, we can do:</p>
+<p>Ahora si queremos usar la clase <code>.button</code> en nuestra <code>#header a</code>, podemos hacer:</p>
 
 <pre><code>#header a {
   color: orange;
@@ -1156,10 +1152,9 @@ You can do this pretty intuitively in LESS—say you want to bundle some mixins 
 }
 </code></pre>
 
-<h2>Scope</h2>
+<h2>Ámbito</h2>
 
-<p>Scope in LESS is very similar to that of programming languages. Variables and mixins are first looked up locally,
-and if they aren&rsquo;t found, the compiler will look in the parent scope, and so on.</p>
+<p>El ámbito de las variables en LESS es muy similar al de la mayoría de los lenguaje de programación. Las variables y los <em>mixins</em> se buscan primero en el ámbito local, si no se encuentran, el compilador buscará en el ámbito inmediatamente superior, y así sucesivament.</p>
 
 <pre><code>@var: red;
 
@@ -1175,53 +1170,52 @@ and if they aren&rsquo;t found, the compiler will look in the parent scope, and 
 }
 </code></pre>
 
-<h2>Comments</h2>
+<h2>Comentarios</h2>
 
-<p>CSS-style comments are preserved by LESS:</p>
+<p>Los comentarios en LESS tienen el mismo formato que los comentarios en CSS:</p>
 
-<pre><code>/* Hello, I'm a CSS-style comment */
+<pre><code>/* Hola, soy un comentario CSS */
 .class { color: black }
 </code></pre>
 
-<p>Single-line comments are also valid in LESS, but they are &lsquo;silent&rsquo;,
-they don&rsquo;t show up in the compiled CSS output:</p>
+<p>Los comentarios de una línea también son válidos en LESS, pero son 'silenciosos', es decir, no se mostrará el código CSS compilado:</p>
 
-<pre><code>// Hi, I'm a silent comment, I won't show up in your CSS
+<pre><code>// Hola, soy un comentario silecioso, no aparecerá en tu código CSS
 .class { color: white }
 </code></pre>
 
-<h2>Importing</h2>
+<h2>Importación</h2>
 
-<p>You can import both CSS and LESS files. Only LESS files import statements are processed, CSS file import statements are kept as they are. If you want to import a CSS file, and don&rsquo;t want LESS to process it, just use the <code>.css</code> extension:</p>
+<p>Puedes importar tanto ficheros CSS como LESS. Únicamente se procesarán las sentencias de importación de ficheros LESS, las sentencias de importación se mantendrán. Si quieres importar un fichero CSS, y no quieres que LESS lo procese, solo tienes que especificar la extensión <code>.css</code>:</p>
 
 <pre><code>@import "lib.css";
 </code></pre>
 
-<p>Compilation makes only one change to CSS file imports: top level CSS file imports are moved on top of the sheet, right after @charset declarations.</p>
+<p>La compilación solo realiza un de las sentencias de importación de fichero CSS: las sentencias de importación de fichero CSS son movidos a la parte superior de la hoja de estilo, justo después de las declaraciones.</p>
 
-<p>Input file with import statement:</p>
+<p>El fichero de entrada con sentencias de importación:</p>
 
 <pre><code>h1 { color: green; }
 @import "import/official-branding.css?urlParameter=23";
 </code></pre>
 
-<p>import statement has been moved on top:</p>
+<p>las sentecias de importación han sido desplazados a la parte superior:</p>
 
 <pre><code>@import "import/official-branding.css?urlParameter=23";
 h1 { color: green; }
 </code></pre>
 
-<p>Content of imported LESS file is copied into importing style sheet and compiled together with it. Importing and imported files share all mixins, namespaces, variables and other structures.</p>
+<p>El contenido del fichero LESS importado es copiado en la hoja de estilo importador y compilado junto a él. Los ficheros importadores e importados comparten todos los <em>mixins</em>, espacios de nombres, variables y otras estructuras.</p>
 
-<p>In addition, if the import statement has media queries specified in it, imported content is enclosed in the <code>@Media</code> declaration.</p>
+<p>Además, si en la sentecia de importación se han definido media queries, el contenido importado estará encerrado en una declaración <code>@Media</code>.</p>
 
-<p>Imported &ldquo;library.less&rdquo;:</p>
+<p>Fichero importado &ldquo;library.less&rdquo;:</p>
 
 <pre><code>@imported-color: red;
 h1 { color: green; }
 </code></pre>
 
-<p>Main file imports the above library.less file:</p>
+<p>Los ficheros de importación principales en la parte superior del fichero library.less:</p>
 
 <pre><code>@import "library.less" screen and (max-width: 400px); // import with media queries
 @import "library.less"; // import without media queries
@@ -1231,24 +1225,24 @@ h1 { color: green; }
 }
 </code></pre>
 
-<p>Compiled output:</p>
+<p>Resultado obtenido:</p>
 
-<pre><code>// Corresponds to import with media queries
+<pre><code>// Se corresponde a la importación con media queries
 @media screen and (max-width: 400px) {
   h1 { color: green; }
 }
 
-// Corresponds to import without media queries
+// Se corresponde a la importación sin media queries
 h1 { color: green; }
 .class {
-  // Use imported variable
+  // Se usa la variable importada
   color: #ff0000;
 }
 </code></pre>
 
-<p>LESS file import statement does not have to be located on top of the style sheet. It can be placed also inside rulesets, mixins or other LESS structures.</p>
+<p>La sentencia de importación de fichero LESS no tiene que estar localizada en la parte superior de la hoja de estilo. Puedes colocarla dentro de reglas, <em>mixins</em> y otras estructuras LESS.</p>
 
-<p>Import into ruleset:</p>
+<p>Importación dentro de reglas:</p>
 
 <pre><code>pre {
   @import "library.less";
@@ -1256,7 +1250,7 @@ h1 { color: green; }
 }
 </code></pre>
 
-<p>both variable and ruleset defined in &ldquo;library.less&rdquo; have been copied into the <code>pre</code> ruleset:</p>
+<p>tanto varables como reglas definidas en &ldquo;library.less&rdquo; han sido copiados en la regla  <code>pre</code>:</p>
 
 <pre><code>pre {
   color: #ff0000; // variable defined in library.less was available
@@ -1266,9 +1260,9 @@ pre h1 { // ruleset defined in library.less was nested into 'pre' ruleset
 }
 </code></pre>
 
-<p>In v1.3.0 - v1.3.3 <code>@import</code> imports a file multiple times and you can override this behaviour with <code>@import-once</code>.</p>
+<p>En las versiones v1.3.0 - v1.3.3 <code>@import</code> importa un fichero varias veces y puedees sobrescribir este comportamiento con <code>@import-once</code>.</p>
 
-<p>In v1.4.0 <code>@import-once</code> has been removed and <code>@import</code> imports once by default. This means that with the following</p>
+<p>En la versión v1.4.0 <code>@import-once</code> ha sido eliminado y <code>@import</code> importa una única vez por defecto. Ésto significa lo siguiente</p>
 
 <p>   @import &ldquo;file.less&rdquo;;
    @import &ldquo;file.less&rdquo;;</p>

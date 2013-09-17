@@ -83,16 +83,16 @@
       <div id="logo"></div>
       <h2>El <span>lenguaje</span> dinámico <span>de hojas de estilo</span>.</h2>
       <h3>
-        LESS amplía CSS añadiendo comportamiento dinámico como por ejemplo <span>variables</span>, <span><em>mixins</em></span>,
+        LESS amplía CSS añadiendo comportamiento dinámico, como por ejemplo <span>variables</span>, <span>mixins</span>,
         <span>operaciones</span> y <span>funciones</span>.
       </h3>
       <h3>
-        LESS puede ejecutarse tanto en el lado del servidor (usando <span>Node.js</span> y <span>Rhino</span>) como <span>del lado del cliente</span> (únicamente en navegadores modernos).
+        LESS puede ejecutarse tanto del lado del servidor (usando <span>Node.js</span> y <span>Rhino</span>) como <span>del lado del cliente</span> (únicamente en navegadores modernos).
       </h3>
       <a id="download" href="https://raw.github.com/less/less.js/master/dist/less-1.4.1.min.js">
         <img src="/lesscss.org//images/download-button.png" />
       </a><div id="download-info">
-      <div>version <code>1.4.1</code></div>
+      <div>versión <code>1.4.1</code></div>
       <div><a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">registro de cambios</a></div>
     </div>
     </section>
@@ -162,32 +162,32 @@ lessc styles.less styles.css
   <div class="content">
     <h2>1.4.0</h2>
 
-<p>Hemos lanzado la vesión 1.4.0. Esta versión incluye nuevas características tales como herencia, la función data-uri y muchas más funciones matemáticas. Visita el <a href="https://github.com/cloudhead/less.js/blob/master/CHANGELOG.md">registro de cambios</a> para consultar la lista completa de cambios.</p>
+<p>La versión 1.4.0 ha sido lanzada. Esta versión incluye nuevas características tales como la herencia, la función data-uri y muchas más funciones matemáticas. Visita el <a href="https://github.com/cloudhead/less.js/blob/master/CHANGELOG.md">registro de cambios</a> para consultar la lista completa de cambios.</p>
 
-<p>Alguno de ellos son <span class="warning">cambios de último mminuto</span>.</p>
+<p>Alguno de ellos son conocidos como <span class="warning">cambios de ruptura</span>.</p>
 
-<p><code>@import-once</code> es eliminado y es ahora el comportamiento por defecto para <code>@import</code>.</p>
+<p><code>@import-once</code> ha sido eliminado y ahora es el comportamiento por defecto para <code>@import</code>.</p>
 
-<p><code>(~".myclass_@{index}") { ...</code> el selector de interpolación cae en desuso (<em>deprectaed</em>), se recomienda hacer <code>.myclass_@{index} { ...</code>. Funciona a partir de la versión 1.3.1.</p>
+<p><code>(~".myclass_@{index}") { ...</code> el selector de interpolación cae en desuso (<em>deprectaed</em>), se recomienda usar en su lugar <code>.myclass_@{index} { ...</code>. Funciona a partir de la versión 1.3.1.</p>
 
-<p>Las versiones de los navegadores que ya no usen una versión de es5-shim.js - la versión que usábamos anteriormente era incorrecta y la nueva versión es significativamente más grande. Por favor incluye tu elección de es-5 shim o usa únicamente navegadores modernos.</p>
+<p>Las versiones de los navegadores que ya no usen una versión de es5-shim.js - la versión que se usaba anteriormente era imprecisa y la nueva versión es significativamente más grande. Por favor incluye es-5 shim o usa únicamente navegadores modernos.</p>
 
-<p>Hemos introducido un modo opcional strictMath, donde los paréntesis son necesarios para realizar operaciones matemáticas, por ejemplo</p>
+<p>Se ha introducido un modo opcional denominado strictMath, donde los paréntesis son necesarios para realizar operaciones matemáticas, por ejemplo</p>
 
 <pre><code>(1 + 1)  // 2
 1 + 1    // 1+1
 </code></pre>
 
-<p>En la versión 1.4.0 esta opción está deshabilitada, pero tenemos pensado habilitarla por defecto. Te recomendamos que actualices tu código y habilites esta opción (&ndash;strict-math=on en línea de comando o strictMath: true en JavaScript). El código escrito entre paréntesis es compatible con versiones anteriores del compilador less.</p>
+<p>En la versión 1.4.0 esta opción está deshabilitada, pero estará habillitada por defecto en el futuro. Se recomienda que actualices tu código y habilites esta opción (&ndash;strict-math=on en línea de comando o strictMath: true en JavaScript). El código escrito entre paréntesis es compatible con versiones anteriores del compilador less.</p>
 
-<p>Tambien hemos añadido una opción para el uso estricto de unidades (strictUnits: true o strict-units=on) la que obliga al compilador de less a valildar que las unidades usadas sean correctas (por ejemplo 4px/2px = 2, en cambio 2px y 4em/2px producirán un error). No hay planes para habilitar esta opción por defecto permanentemente, pero algunos usuarios lo encontraran útil para la detección de <em>bugs</em>.</p>
+<p>Tambien hemos añadido una opción para el uso estricto de unidades (strictUnits: true o strict-units=on) la cual obliga al compilador de less a valildar que las unidades usadas sean correctas (por ejemplo 4px/2px = 2, en cambio 2px y 4em/2px producirán un error). No hay planes para habilitar esta opción por defecto permanentemente, pero algunos usuarios lo encontraran útil para la detección de <em>errores</em>.</p>
 
-<p>Unit maths is done, so <code>(4px * 3em) / 4px</code> used to equal <code>3px</code> and it now equals <code>3em</code>. However we do not cancel units down to unitless numbers unless strict units is on.
-The selector interpolation, maths and units changes can be made to your less now and will compile fine with less 1.3.3.</p>
+<p>Las unidades matemáticas están terminadas, <code>(4px * 3em) / 4px</code> solía ser igual a <code>3px</code> y ahora es igual a <code>3em</code>. No obstante, no se usarán números sin unidades a menos que el modo estricto esté activado.
+El selector interpolación y los cambios en las funciones matemáticas y en las unidades compilarán correctamente en less 1.3.3.</p>
 
 <h2>Variables</h2>
 
-<p>Las variables permiten especificar valores que van a ser utilizados en un único lugar, y además poder reusarlas por toda la hoja de estilo, pudiendo realizar cambios globales modificando una única línea de código.</p>
+<p>Las variables permiten especificar valores que van a ser utilizados en un único lugar, y además poder reusarlas en otras partes de la hoja de estilo, pudiendo realizar cambios globales modificando una única línea de código.</p>
 
 <table class="code-example" cellpadding="0">
   <tr><td>
@@ -215,9 +215,9 @@ h2 {
 </table>
 
 
-<h2><em>Mixins</em></h2>
+<h2>mixins</h2>
 
-<p>Los Mixins permiten incluir todas las propiedades de una clase en otra clase simplemente añadiendo el nombre de clase como una propiedad más. El comportamiento es similar al de las variables pero con clases enteras. Los <em>mixins</em> pueden comportarse tambien como fuciones, y tomar argumentos, como vemos en el siguiente ejemplo.</p>
+<p>Los mixins permiten incluir todas las propiedades de una clase en otra clase diferente añadiendo simplemente el nombre de la clase como una propiedad más. El comportamiento es similar al de las variables pero con clases enteras. Los mixins pueden comportarse tambien como fuciones, y tomar argumentos, como se ve en el siguiente ejemplo.</p>
 
 <table class="code-example" cellpadding="0">
   <tr><td>
@@ -239,7 +239,7 @@ h2 {
 }</code></pre></td>
 
 <td>
-  <pre class="css-output"><code>/* Compiled CSS */
+  <pre class="css-output"><code>/* CSS compilado */
 
 #header {
   -webkit-border-radius: 5px;
@@ -261,7 +261,7 @@ h2 {
 
 <h2>Reglas internas</h2>
 
-<p>En vez de escribir selectores con nombres largos ara especificar herencia, en Less puedes simplemente anidar selectores dentro de otros. Ésto hace la herencia más clara y disminuir el tamaño de la hoja de estilo.</p>
+<p>En vez de escribir selectores con nombres largos para especificar una relación de herencia, en Less puedes anidar selectores dentro de otros. Ésto hace la herencia más clara y reducir el tamaño de la hoja de estilo.</p>
 
 <table class="code-example" cellpadding="0">
   <tr><td>
@@ -306,7 +306,7 @@ h2 {
 
 <h2>Funciones &amp; Operaciones</h2>
 
-<p>¿Algún elemento en tu hoja de estilo depende de otros elementos? Las operacion te permiten sumar, restar, multiplicar y dividir los vaalores de las propiedades y colores, dándote el poder de crear relaciones complejas entre propiedades. Las operaciones deberían estar definidas entre paréntesis para asegurar la compatibilidad con CSS. Las funciones se corresponde a funciones JavaScript, permitiéndote modificar valores como tu quieras.</p>
+<p>¿Existe dependencia entre elementos de tu hoja de estilo? Las operaciones te permiten sumar, restar, multiplicar y dividir los valores de las propiedades y colores, dándote el poder de crear relaciones complejas entre propiedades. Las operaciones deberían estar definidas entre paréntesis para asegurar la compatibilidad con CSS. Las funciones se corresponde a funciones JavaScript, permitiéndote modificar valores como quieras.</p>
 
 <table class="code-example" cellpadding="0">
   <tr><td>
@@ -352,16 +352,16 @@ h2 {
 
 <section id="usage" class="page page-dark">
   <div class="content">
-    <h1>Uso desde el lado del cliente</h1>
+    <h1>Uso del lado del cliente</h1>
 
-<p>La manera más fácil de usar LESS es desde el lado del cliente. En producción y especialmente si el rendimiento es importante, recomendamos pre-compilar el código usando node o alguna otra herramienta.</p>
+<p>La manera más fácil de usar LESS es del lado del cliente. En producción y especialmente si el rendimiento es importante, se recomienda pre-compilar el código usando node o alguna otra herramienta.</p>
 
-<p>Enlaza tu hoja de estilo <code>.less</code> con el atributo <code>rel</code> con el valor &ldquo;<code>stylesheet/less</code>&rdquo;:</p>
+<p>Enlaza tu hoja de estilo <code>.less</code> con el atributo <code>rel</code> especificando el valor &ldquo;<code>stylesheet/less</code>&rdquo;:</p>
 
 <pre><code>&lt;link rel="stylesheet/less" type="text/css" href="styles.less" /&gt;
 </code></pre>
 
-<p>Luego descarga el fichero <code>less.js</code> desde el enlace situado al inicio de la página, e inclúyelo en el elemento <code>&lt;head&gt;</code> de tu página, tal que así:</p>
+<p>A continuación descarga el fichero <code>less.js</code> desde el enlace situado al inicio de la página, e inclúyelo en el elemento <code>&lt;head&gt;</code> de tu página, tal que así:</p>
 
 <pre><code>&lt;script src="less.js" type="text/javascript"&gt;&lt;/script&gt;
 </code></pre>
@@ -373,14 +373,14 @@ h2 {
 <pre><code>&lt;script type="text/javascript"&gt;
     less = {
         env: "development", // o "production"
-        async: false,       // carga los imports de manera asíncrona
-        fileAsync: false,   // carga los imports de manera asíncrona cuando una página usa
+        async: false,       // carga las importaciones de manera asíncrona
+        fileAsync: false,   // carga las importaciones de manera asíncrona cuando una página usa
         //un protocolo de archivos
-        poll: 1000,         // cuando está activado el watch mode, tiempo en ms entra polls
-        functions: {},      // funciones del usuario, user functions, tecleadas por nombre
+        poll: 1000,         // cuando está activado el modo guarda, tiempo en ms entra consultas
+        functions: {},      // funciones del usuario, especificadas por nombre
         dumpLineNumbers: "comments", // o "mediaQuery" o "all"
-        relativeUrls: false,// ajustar las urls's para que sean relativas
-                            // si false, las url's serán ya relativas para el
+        relativeUrls: false,// ajusta las urls para que sean relativas
+                            // si false, las urls se considerarán relativas respecto al
                             // fichero less de entrada
         rootpath: ":/a.com/"// una ruta para añadir al comienzo de cada una de las 
         // urls
@@ -389,15 +389,15 @@ h2 {
 &lt;script src="less.js" type="text/javascript"&gt;&lt;/script&gt;
 </code></pre>
 
-<h2>Watch mode</h2>
+<h2>Modo guarda</h2>
 
-<p><em>Watch mode</em> es una característica del lado del cliente que habilita que tus estilos se actualicen automáticamente cuando son modificados.</p>
+<p>El <em>modo guarda</em> es una característica del lado del cliente que habilita la actualización automática de tus estilos cuando son modificados.</p>
 
-<p>Para habilitarlo, To enable it, añade &lsquo;<code>#!watch</code>&rsquo; a la URL del navegador, luego recarga la página. O bien, puedes ejecutar la función <code>less.watch()</code> desde la consola.</p>
+<p>Para habilitarlo, añade &lsquo;<code>#!watch</code>&rsquo; a la URL del navegador y luego recarga la página. O bien, puedes ejecutar la función <code>less.watch()</code> desde la consola.</p>
 
 <h2>Modificar variables</h2>
 
-<p><em>modifyVars</em> habilita la modificación de variables LESS en tiempo de ejecución. Cuando se ejecuta indicando nuevos valores, el fichero LESS es recompilado sin tener que recargar la página. Un ejemplo simple sería:</p>
+<p><em>modifyVars</em> habilita la modificación de variables LESS en tiempo de ejecución. Cuando se ejecuta indicando nuevos valores, el fichero LESS es recompilado sin tener que recargar la página. Un ejemplo simple sería el siguiente:</p>
 
 <pre><code>less.modifyVars({
     '@buttonFace': '#5B83AD',
@@ -407,13 +407,13 @@ h2 {
 
 <h2>Depurando</h2>
 
-<p>Es posible obtener las reglas de salida en tu CSS lo que permite localizar la fuente de la regla.</p>
+<p>Es posible obtener el código CSS de salida que permite localizar el origen de una regla.</p>
 
-<p>Tanto si especificas la opción <code>dumpLineNumbers</code> como hemos visto anteriormente como si añades <code>!dumpLineNumbers:mediaQuery</code> a la url.</p>
+<p>Tanto si especificas la opción <code>dumpLineNumbers</code> como hemos visto anteriormente, como si añades <code>!dumpLineNumbers:mediaQuery</code> en la url.</p>
 
-<p>Puedes usar la opción &ldquo;comments&rdquo; junto con <a href="https://addons.mozilla.org/en-us/firefox/addon/fireless/">FireLESS</a> y la opción &ldquo;mediaQuery&rdquo; junto con las herramiento de desarrollo FireBug/Chrome (similar a la depuración de SCSS media query).</p>
+<p>Puedes usar la opción &ldquo;comments&rdquo; junto con <a href="https://addons.mozilla.org/en-us/firefox/addon/fireless/">FireLESS</a> y la opción &ldquo;mediaQuery&rdquo; junto con FireBug y las herramientas de desarrollo de Chrome (similar a la depuración de media queries en SCSS).</p>
 
-<h1>Uso desde el lado del servidor</h1>
+<h1>Uso del lado del servidor</h1>
 
 <h2>Instalación</h2>
 
@@ -424,17 +424,17 @@ h2 {
 
 <h2>Uso de la línea de comando</h2>
 
-<p>Una vez instalado. puedes invocar al compilador desde la líne de comando de la siguiente manera:</p>
+<p>Una vez instalado, puedes llamar al compilador desde la línea de comando de la siguiente manera:</p>
 
 <pre><code>$ lessc styles.less
 </code></pre>
 
-<p>Producirá la salidad del código CSS compilado en <code>stdout</code>, puedes redirigir la salida a cualquier fichero que desees:</p>
+<p>Producirá la salidad del código CSS compilado en <code>stdout</code>, puedes redirigir esta salida a cualquier fichero que desees:</p>
 
 <pre><code>$ lessc styles.less &gt; styles.css
 </code></pre>
 
-<p>Para obtener el código CSS comprimido (<em>minified</em>) simplemente utiliza la opción <code>-x</code>. Tambien puedes usar la herramienta <a href="http://developer.yahoo.com/yui/compressor/css.html">YUI CSS Compressor</a> está tambien disponible con la opción <code>--yui-compress</code>.</p>
+<p>Para obtener el código CSS comprimido, simplemente utiliza la opción <code>-x</code>. Tambien puedes usar la herramienta <a href="http://developer.yahoo.com/yui/compressor/css.html">YUI CSS Compressor</a> con la opción <code>--yui-compress</code>.</p>
 
 <p>Para consultar todas las opciones de la línea de comando ejecuta el comando lessc sin ningín parámetro.</p>
 
@@ -449,14 +449,14 @@ less.render('.class { width: (1 + 1) }', function (e, css) {
 });
 </code></pre>
 
-<p>cuyo resultado será</p>
+<p>el resultado será</p>
 
 <pre><code>.class {
   width: 2;
 }
 </code></pre>
 
-<p>también puedes invocar manualmente al parseador y al compilador:</p>
+<p>también puedes invocar manualmente al parser y al compilador:</p>
 
 <pre><code>var parser = new(less.Parser);
 
@@ -468,11 +468,11 @@ parser.parse('.class { width: (1 + 1) }', function (err, tree) {
 
 <h2>Configuración</h2>
 
-<p>Puedes definir algunos parámetros del compilador:</p>
+<p>Puedes modificar algunos parámetros del compilador:</p>
 
 <pre><code>var parser = new(less.Parser)({
-    paths: ['.', './lib'], // Specify search paths for @import directives
-    filename: 'style.less' // Specify a filename, for better error messages
+    paths: ['.', './lib'], // Especifica las rutas de búsqueda para las directivas @import
+    filename: 'style.less' // Especifica un fichero, para bien mensajes de errores
 });
 
 parser.parse('.class { width: (1 + 1) }', function (e, tree) {
@@ -482,7 +482,7 @@ parser.parse('.class { width: (1 + 1) }', function (e, tree) {
 
 <h2>Otras herramientas</h2>
 
-<p>Existe una selección de herramientas disponibles para la ejecución en tu entorno particular y todo ello está documentado en Github wiki.</p>
+<p>Existe una selección de herramientas disponibles que puedes usar en tu entorno local y todas están documentado en la wiki de Github.</p>
 
 <p><a href="https://github.com/cloudhead/less.js/wiki/Command-Line-use-of-LESS">Herramientas de línea de comando</a></p>
 
@@ -494,7 +494,7 @@ parser.parse('.class { width: (1 + 1) }', function (e, tree) {
 <section id="docs" class="page page-light">
   <h1>El lenguaje</h1>
   <div class="content">
-    <p>Al ser una extensión de CSS, LESS no es solo retrocompatible con CSS, sino que proporciona características extras usando sintaxis CSS. Ésto hace que aprender LESS sea muy sencillo, y si tienes dudas, siempre puedes recurrir a CSS.</p>
+    <p>Al ser una extensión de CSS, LESS no es solo retrocompatible con CSS, sino que proporciona características extras usando sintaxis CSS. Ésto hace que aprender LESS sea muy sencillo, y si tienes dudas, siempre podrás recurrir a CSS.</p>
 
 <h2>Variables</h2>
 
@@ -511,7 +511,7 @@ parser.parse('.class { width: (1 + 1) }', function (e, tree) {
 <pre><code>#header { color: #6c94be; }
 </code></pre>
 
-<p>También es posible definir cariables con un nombre de variable:</p>
+<p>También se les puede asignar un nombre:</p>
 
 <pre><code>@fnord: "I am fnord.";
 @var: 'fnord';
@@ -523,7 +523,7 @@ content: @@var;
 <pre><code>content: "I am fnord.";
 </code></pre>
 
-<p>Cuando definimos una variable dos veces, se usará la última definición de la variable, buscando desde el ámbito actual hacia arriba. Similar a lo que ocurre en el propio CSS donde la última propiedad dentro de una definición es la que determina el valor.</p>
+<p>Cuando definimos una variable dos veces, se usará la última definición de la variable, buscando desde el ámbito actual hacia arriba. Similar a lo que ocurre en CSS donde la última propiedad dentro de una definición es la que determina el valor.</p>
 
 <p>Por ejemplo:</p>
 
@@ -549,9 +549,9 @@ content: @@var;
 }
 </code></pre>
 
-<p>Las variables son cargadas de manera <em>lazy</em> y no tienen que ser declaradas antes de ser usadas.</p>
+<p>Las variables son inicializadas de manera diferida y no tienen que ser declaradas antes de usarse.</p>
 
-<p>Código less válido:</p>
+<p>El siguiente código es válido:</p>
 
 <pre><code>lazy-eval {
   width: @var;
@@ -561,7 +561,7 @@ content: @@var;
 @a: 9%;
 </code></pre>
 
-<p>también es válido lo siguiente:</p>
+<p>también es válido el siguiente:</p>
 
 <pre><code>.lazy-eval-scope {
   width: @var;
@@ -572,7 +572,7 @@ content: @@var;
 @a: 100%;
 </code></pre>
 
-<p>both compile into:</p>
+<p>ambos obtienen la misma salida:</p>
 
 <pre><code>.lazy-eval-scope {
   width: 9%;
@@ -581,7 +581,7 @@ content: @@var;
 
 <h2>Mixins</h2>
 
-<p>En LESS, es posible incluir un conjunto de propiedades desde una regla a otra. De esta manera, tendremos la siguiente clase:</p>
+<p>En LESS, es posible incluir un conjunto de reglas de un selector en otro. De esta manera, definimos el siguiente selector:</p>
 
 <pre><code>.bordered {
   border-top: dotted 1px black;
@@ -589,7 +589,7 @@ content: @@var;
 }
 </code></pre>
 
-<p>Si queremos incluir las propiedades de esta clase en otra regla tendremos que incluir el nombre de la clase dentro de la regla en la que queremos incluir las propiedades, tal que:</p>
+<p>Si queremos incluir las reglas de este selector en otro tendremos que incluir el nombre del selector dentro del otro selector en el que queremos incluir las reglas, tal que:</p>
 
 <pre><code>#menu a {
   color: #111;
@@ -601,7 +601,7 @@ content: @@var;
 }
 </code></pre>
 
-<p>Las propiedades de la clase <code>.bordered</code> aparecen ahora en ambas <code>#menu a</code> y <code>.post a</code>:</p>
+<p>Las reglas del selector <code>.bordered</code> aparecen ahora en ambos <code>#menu a</code> y <code>.post a</code>:</p>
 
 <pre><code>#menu a {
   color: #111;
@@ -615,13 +615,13 @@ content: @@var;
 }
 </code></pre>
 
-<p>Cualquier <em>clase</em> CSS o <em>id</em> puede ser incluida dentro de otra regla de cualquier manera.</p>
+<p>Cualquier selector de <em>clase</em> o <em>id</em> puede ser incluido dentro de otro de cualquier manera.</p>
 
-<p>Nota: Las variables tambien puede ser mezcladas, de esta menra las variables de un <em>mixin</em> serán colocadas en el ámbito actual. Este comportamiento puede ser modificado en el futuro.</p>
+<p>Nota: Las variables tambien puede ser incluidas, de esta manera las variables de un mixin serán incluidas en el ámbito actual. Este comportamiento puede ser modificado en el futuro.</p>
 
 <h2>Mixins Paramétricos</h2>
 
-<p>LESS tiene un tipo especial de regla que puede ser mezcladas como si fuesen clases, pueden además aceptar parámetros. Aquí un ejemplo sencillo:</p>
+<p>LESS tiene un tipo especial de selector que puede ser mezclado como si fuera una regla, pudiendo además aceptar parámetros. A continuación un ejemplo sencillo:</p>
 
 <pre><code>.border-radius (@radius) {
   border-radius: @radius;
@@ -630,7 +630,7 @@ content: @@var;
 }
 </code></pre>
 
-<p>Y aquí vemos como podemos usarla en varias reglas con diferentes parámetros:</p>
+<p>Y aquí vemos como podemos usarla en varios selectores con diferentes parámetros:</p>
 
 <pre><code>#header {
   .border-radius(4px);
@@ -640,7 +640,7 @@ content: @@var;
 }
 </code></pre>
 
-<p>Los <em>mixins</em> paramétricos pueden definir valores por defecto para sus parámetros:</p>
+<p>Se pueden definir valores por defecto para los parámetros de los mixins paramétricos:</p>
 
 <pre><code>.border-radius (@radius: 5px) {
   border-radius: @radius;
@@ -649,16 +649,16 @@ content: @@var;
 }
 </code></pre>
 
-<p>Ahora podemos invocarlo de la siguiente manera:</p>
+<p>Ahora podemos llamarlos de la siguiente manera:</p>
 
 <pre><code>#header {
   .border-radius;
 }
 </code></pre>
 
-<p>De esta manera incluiremos la propiedad 5px border-radius.</p>
+<p>De esta manera incluiremos la propiedad border-radius con un valor de 5px.</p>
 
-<p>Además, podemos usar mixins paramétricos que no toman parámetros. Esto es útil si quieres ocultar la regla en el CSS generado, pero si incluir sus propiedade en otras reglas:</p>
+<p>Además, podemos definir mixins paramétricos a los que no se les pase ningún parámetro. Es útil si quieres ocultar el selector en el CSS generado, pero no sus propiedades en otros selectores:</p>
 
 <pre><code>.wrap () {
   text-wrap: wrap;
@@ -682,19 +682,19 @@ pre { .wrap }
 
 <h3>Mixins Con Múltiples Parámetros</h3>
 
-<p>Los parámetros pueden ir separados por <em>punto y coma</em> o <em>coma</em>. Se recomienda el uso del <em>punto y coma</em>. La coma tiene un doble significado: puede ser interpretado como el separador de los parámetros de un <em>mixin</em> o el separador de una lista css.</p>
+<p>Los parámetros pueden ir separados por <em>punto y coma</em> o <em>coma</em>. Se recomienda el uso del <em>punto y coma</em>. La coma tiene un doble significado: puede ser interpretado como el separador de los parámetros de un mixin o el separador de los elementos de una lista css.</p>
 
-<p>Usar la coma como separador del <em>mixin</em> impide utilizar una lista separada por comas como un argumento. Por otra parte, cuando el compilador ve al menos un punto y coma dentro de la llamada del <em>mixin</em> , asume que los argumentos estarán separados por puntos y comas y todas la comas pertenecen a listas css:</p>
+<p>Usar la coma como separador del mixin impediría usar una lista separada por comas como un argumento. Por otra parte, cuando el compilador ve al menos un punto y coma dentro de la llamada del mixin, asume que los argumentos estarán separados por punto y coma y todas la comas pertenecen a listas css:</p>
 
 <ul>
 <li>dos argumentos y cada uno contienen una lista separadas por comas: <code>.name(1, 2, 3; something, else)</code>,</li>
-<li>tres argumentos y cada uno contienen un número: <code>.name(1, 2, 3)</code>,</li>
-<li>usar un punto y coma inútil para crear una llamada al <em>mixin</em> con un argumento que contiene una lista deparada por comas: <code>.name(1, 2, 3;)</code>,</li>
+<li>tres argumentos y cada uno contiene un número: <code>.name(1, 2, 3)</code>,</li>
+<li>usar un punto y coma inútil para crear una llamada al mixin con un argumento que contiene una lista deparada por comas: <code>.name(1, 2, 3;)</code>,</li>
 <li>valor por defecto separado por comas: <code>.name(@param1: red, blue;)</code>.</li>
 </ul>
 
 
-<p>Es legal definir múltiples <em>mixins</em> con el mismo nombre y el mismo número de parámetros. Less usará las propiedades de todos los <em>mixins</em> que puedaan aplicarse. Si usas un <code>.mixin(green);</code> de un parámetro, por ejemplo .mixin(green);, luego las propiedades de todos los mixins que tengan exactamente un parámetro obligatorio serán usados:</p>
+<p>Es legal definir múltiples mixins con el mismo nombre y el mismo número de parámetros. Less usará las reglas de todos los mixins que puedan aplicarse. Si usas el mixin con un solo parámetro, por ejemplo .mixin(green);, serán seleccionadas las reglas de todos los mixins que tengan exactamente un parámetro obligatorio, es decir, no tengán un valor por defecto definido:</p>
 
 <pre><code>.mixin(@color) {
   color-1: @color;
@@ -713,7 +713,7 @@ pre { .wrap }
 }
 </code></pre>
 
-<p>el código generado será:</p>
+<p>la salida será:</p>
 
 <pre><code>.some .selector div {
   color-1: #008000;
@@ -724,7 +724,7 @@ pre { .wrap }
 
 <h3>La variable <code>@arguments</code></h3>
 
-<p><code>@arguments</code> tiene un significado especial dentro de los <em>mixins</em>, contiene todos los argumentos pasados, cuando el <em>mixin</em> fue invocado. Es útil si no quieres trabajar con parámetros individuales:</p>
+<p>La variable <code>@arguments</code> tiene un significado especial dentro de los mixins, contiene todos los argumentos que se les pasa cuando el mixin fue invocado. Es útil si no quieres trabajar con parámetros de manera individual:</p>
 
 <pre><code>.box-shadow (@x: 0; @y: 0; @blur: 1px; @color: #000) {
   box-shadow: @arguments;
@@ -743,13 +743,13 @@ pre { .wrap }
 
 <h3>Argumentos adelantados y la variable<code>@rest</code></h3>
 
-<p>Puedes usar <code>...</code> si quieres que el <em>mixin</em> tenga un número variable de argumentos. Usándolo después del nombre de una variable, se incluirá la variable a estos argumentos.</p>
+<p>Puedes usar <code>...</code> si quieres que el mixin tenga un número variable de argumentos. Usándolo después del nombre de una variable, se incluirá la variable a estos argumentos.</p>
 
-<pre><code>.mixin (...) {        // matches 0-N arguments
-.mixin () {           // toma exáctamente 0 argumentos
-.mixin (@a: 1) {      // toma entre 0-1 argumentos
-.mixin (@a: 1; ...) { // toma entre 0-N argumentos
-.mixin (@a; ...) {    // toma entre 1-N argumentos
+<pre><code>.mixin (...) {        // acepta 0-N argumentos
+.mixin () {           // acepta exáctamente 0 argumentos
+.mixin (@a: 1) {      // acepta entre 0-1 argumentos
+.mixin (@a: 1; ...) { // acepta entre 0-N argumentos
+.mixin (@a; ...) {    // acepta entre 1-N argumentos
 </code></pre>
 
 <p>Además:</p>
@@ -760,11 +760,11 @@ pre { .wrap }
 }
 </code></pre>
 
-<h2>La palabra clave !important</h2>
+<h2>La Palabra Clave !important</h2>
 
-<p>Usa la palabra clave !important después de la invocación del <em>mixin</em> para marcar todas las propiedades como importante:</p>
+<p>Puedes usar la palabra clave !important después de la llamada de un mixin para marcar todas sus reglas como importantes:</p>
 
-<p>Entrada:</p>
+<p>Ejemplo de entrada:</p>
 
 <pre><code>.mixin (@a: 0) {
   border: @a;
@@ -790,9 +790,9 @@ pre { .wrap }
 }
 </code></pre>
 
-<h2>Patrones y <em>Guard expressions</em></h2>
+<h2>Patrones y expresiones condicionadas</h2>
 
-<p>Algunas veces, puedes querer cambiar el comportamiento de un <em>mixin</em> basándote en los parámetros que le pasas. Vamos a comenzar por un ejemplo sencillo:</p>
+<p>Algunas veces, puedes querer cambiar el comportamiento de un mixin basándote en los parámetros que le pasas. Vamos a ver un ejemplo sencillo:</p>
 
 <pre><code>.mixin (@s; @color) { ... }
 
@@ -801,7 +801,7 @@ pre { .wrap }
 }
 </code></pre>
 
-<p>Ahora supongamos que queremos que <code>.mixin</code> se comporte de manera diferente dependiendo del valor de <code>@switch</code>, podríamos definir <code>.mixin</code> de la siguiente manera:</p>
+<p>Ahora supongamos que queremos que <code>.mixin</code> se comporte de una manera determinada dependiendo del valor de la variable <code>@switch</code>, podríamos definir <code>.mixin</code> de la siguiente manera:</p>
 
 <pre><code>.mixin (dark; @color) {
   color: darken(@color, 10%);
@@ -831,20 +831,20 @@ pre { .wrap }
 }
 </code></pre>
 
-<p>Donde el color pasado en <code>.mixin</code> fue aclarado. Si el valor de <code>@switch</code> fuese <code>dark</code>, el resultado sería un color más oscuro.</p>
+<p>Como podemos ver, el color que se le pasa a <code>.mixin</code> fue iluminado. Si el valor de <code>@switch</code> fuese <code>dark</code>, el resultado sería un color más oscuro.</p>
 
-<p>Lo que ha pasado ha sido:</p>
+<p>Lo que ha pasado ha sido lo siguiente:</p>
 
 <ul>
-<li>La primera definición del <em>mixin</em> no encaja porque espera el valor <code>dark</code> como primer argumento.</li>
-<li>La segunda definición encaja, porque espera el valor <code>light</code>.</li>
-<li>La tercera definición también encaja, ya que espera cualquier valor.</li>
+<li>La primera definición del mixin no es invocada porque espera el valor <code>dark</code> como primer argumento.</li>
+<li>La segunda definición es invocada, ya que espera el valor <code>light</code>.</li>
+<li>La tercera definición también es invocada porque espera cualquier valor.</li>
 </ul>
 
 
-<p>Solo se utilizan los <em>mixins</em> cuya definición encaja con los parámetros pasados. Las variables encajan y se vinculan a cualquier valor. Cualquier otra cosa que encaje con una variable igual a si mismo.</p>
+<p>Solo se invocan los mixins cuya definición encaja con los parámetros pasados. Las variables encajan y se vinculan a cualquier valor. Una variable solo puede encajar con un valor igual a si mismo.</p>
 
-<p>Tambien puede coincidir en aridad, aquí un ejemplo:</p>
+<p>Tambien puede usarse la aridad, por ejemplo:</p>
 
 <pre><code>.mixin (@a) {
   color: @a;
@@ -854,14 +854,13 @@ pre { .wrap }
 }
 </code></pre>
 
-<p>Ahora si llamamos a <code>.mixin</code> con un único argumento, conseguiremos la salida obtenida en la primera definición, mientras que si lo llamamos con dos argumentos, obtendremos la segunda definición, with a single argument, we will get the output of the first definition,
-but if we call it with <em>two</em> arguments, we will get the second definition, específicamente <code>@a</code> <em>faded</em> a <code>@b</code>.</p>
+<p>Si llamamos a <code>.mixin</code> con un único argumento, obtendremos la salida obtenida con la primera definición, mientras que si lo llamamos con <em>dos</em> argumentos, obtendremos la segunda definición, en concreto <code>@a</code> <em>se desteñirá</em> un <code>@b</code>.</p>
 
-<h3>Centinelas</h3>
+<h3>Expresiones condicionadas</h3>
 
-<p>Los centinelas son usado cuando quieres coincidencias por <em>expresiones</em>, al contrario que por valores simple o por aridad. Si estás familirarizado con la progrmaación funcional, lo habrás estudiado ya.</p>
+<p>Las expresiones condicionadas se usan cuando quieres invocar un mixins cuando cumple una condición determinada, en vez del valor de algún parámetro o la aridad. Si estás familiarizado con la programación funcional, ya conocerás como funcionan.</p>
 
-<p>Para no alejarse de la naturaleza declarativa de CSS, LESS opta por implementar las ejecuciones condicionales usando <strong><em>mixins</em> centinelas</strong> en vez de sentencias if/else, al igual que ocure con la opción <code>@media</code>.</p>
+<p>Para no alejarse de la naturaleza declarativa de CSS, LESS opta por implementar las ejecuciones condicionales usando <stron><em>mixins<em> condicionados</strong> en vez de sentencias if/else, al igual que ocure con la opción <code>@media</code>.</p>
 
 <p>Vamos a ver un ejemplo:</p>
 
@@ -876,13 +875,13 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 
-<p>La clave es la palabra <strong><code>when</code></strong>, que precede a un centinela (en esta ocasión con una única condición). Si ejecutamos el código siguiente:</p>
+<p>La palabra clave <strong><code>when</code></strong> precede la condición (en esta ocasión una sola). Si ejecutamos el código siguiente:</p>
 
 <pre><code>.class1 { .mixin(#ddd) }
 .class2 { .mixin(#555) }
 </code></pre>
 
-<p>Obtendremos la siguiente salida:</p>
+<p>Obtenemos la siguiente salida:</p>
 
 <pre><code>.class1 {
   background-color: black;
@@ -894,25 +893,25 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 
-<p>La lista completa de operaciones de comparación que se pueden usar son: <strong><code>&gt; &gt;= = =&lt; &lt;</code></strong>. Además, la palabra clave <code>true</code> es el único cuyo valor es verdad, haciendo las siguientes dos <em>mixins</em> equivalentes:</p>
+<p>La lista completa de operadores lógicos que se pueden usar son: <strong><code>&gt; &gt;= = =&lt; &lt;</code></strong>. Además, se puede usar la palabra clave <code>true</code>, haciendo los siguientes dos mixins equivalentes:</p>
 
 <pre><code>.truth (@a) when (@a) { ... }
 .truth (@a) when (@a = true) { ... }
 </code></pre>
 
-<p>Cualquier otro valor que no sea la palabra clave <code>true</code> es falso:</p>
+<p>Cualquier otro valor que no sea <code>true</code> será falso:</p>
 
 <pre><code>.class {
-  .truth(40); // Will not match any of the above definitions.
+  .truth(40); // No invocará a ninguna de las definiciones anteriores
 }
 </code></pre>
 
-<p>Podemos separar varias condiciones separadas por comas &lsquo;<code>,</code>&rsquo;&ndash;si cualquier otra condición es evaluada como true, se considerará toda la condición como true:</p>
+<p>Podemos separar varias condiciones por comas &lsquo;<code>,</code>&rsquo;&ndash;si cualquier condición es evaluada como true, se considerará toda condición como verdadera:</p>
 
 <pre><code>.mixin (@a) when (@a &gt; 10), (@a &lt; -10) { ... }
 </code></pre>
 
-<p>Sate cuenta que también puedes comparar argumentos con otros o con otros valores:</p>
+<p>Se pueden comparar argumentos entre sí o con otras variables:</p>
 
 <pre><code>@media: mobile;
 
@@ -923,13 +922,13 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 .max (@a; @b) when (@a &lt; @b) { width: @b }
 </code></pre>
 
-<p>Por último, si quieres conocer el tipo de algún valor, puedes usar las funciones <em>is*</em>:</p>
+<p>Por último, si se quiere conocer el tipo de algún valor, se pueden usar las funciones <em>is*</em>:</p>
 
 <pre><code>.mixin (@a; @b: 0) when (isnumber(@b)) { ... }
 .mixin (@a; @b: black) when (iscolor(@b)) { ... }
 </code></pre>
 
-<p>Aquí están las funciones que comprueban los tipos básicos:</p>
+<p>Están son las funciones que comprueban los tipos básicos:</p>
 
 <ul>
 <li><code>iscolor</code></li>
@@ -940,7 +939,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </ul>
 
 
-<p>Si quieres comprobar si algún valor, además de ser número, está definido en una unidad específica, podrías usas una de las siguientes funciones:</p>
+<p>Si se quiere comprobar si algún valor, además de ser un número, está definido en una unidad específica, se hace uso de una de las siguientes funciones:</p>
 
 <ul>
 <li><code>ispixel</code></li>
@@ -950,19 +949,19 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </ul>
 
 
-<p>Por último pero no menos importante, puedes usar la palabra clave <strong><code>and</code></strong> para definir coindiciones adicionales dentro de un centinela:</p>
+<p>Por último pero no menos importante, se puede usar la palabra clave <strong><code>and</code></strong> para definir coindiciones adicionales:</p>
 
 <pre><code>.mixin (@a) when (isnumber(@a)) and (@a &gt; 0) { ... }
 </code></pre>
 
-<p>And the <strong><code>not</code></strong> keyword to negate conditions:</p>
+<p>Y la palabra clave <strong><code>not</code></strong> para negar condiciones:</p>
 
 <pre><code>.mixin (@b) when not (@b &gt; 0) { ... }
 </code></pre>
 
 <h2>Reglas internas</h2>
 
-<p>LESS te permite <em>anidar</Em> en vez de, o en combinación, con la cascada. Supongamos que tenemos el siguiente hoja CSS:</p>
+<p>LESS te permite <em>anidar</Em> en vez de usar la cascada, aunque también es posible combinar ambos mecanismos. Supongamos que tenemos la siguiente hoja CSS:</p>
 
 <pre><code>#header { color: black; }
 #header .navigation {
@@ -976,7 +975,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 
-<p>En LESS, podemos escribirlo de la siguiente manera:</p>
+<p>En LESS, se puede escribir de la siguiente forma:</p>
 
 <pre><code>#header {
   color: black;
@@ -991,7 +990,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 
-<p>O de esta manera:</p>
+<p>O de esta otra:</p>
 
 <pre><code>#header        { color: black;
   .navigation  { font-size: 12px }
@@ -1001,9 +1000,9 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 
-<p>Es resultado es un código más conciso e imita mejor la estructura de tu <code>árblo DOM</code>.</p>
+<p>Es resultado es un código más conciso e imita mejor la estructura de tu <code>árbol DOM</code>.</p>
 
-<p>Date cuenta que el combiandor <code>&amp;</code> es usado cuando quieres que tu selector anidado sea concatenado con el selector padre, en vez de actuar de una manera descendente. Es especialmente importante para las pseudo-clases como <code>:hover</code> y <code>:focus</code>.</p>
+<p>Nótese que el combiandor <code>&amp;</code> es usado cuando se quiere que un selector anidado sea concatenado con el selector padre, en vez de actuar de una manera descendente. Es especialmente importante para las pseudoclases como <code>:hover</code> y <code>:focus</code>.</p>
 
 <p>Por ejemplo:</p>
 
@@ -1017,7 +1016,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 
-<p>Obtendremos</p>
+<p>Se obtiene</p>
 
 <pre><code>.bordered.float {
   float: left;
@@ -1029,7 +1028,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 
 <h2><em>Media Queries</em> anidadas</h2>
 
-<p>Las <em>media queries</em> pueden ser anidadas de la misma forma qque los selectores, por ejemplo</p>
+<p>Las media queries pueden ser anidadas de la misma forma que los selectores, por ejemplo</p>
 
 <pre><code>.one {
     @media (width: 400px) {
@@ -1041,7 +1040,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 
-<p>Obtendremos</p>
+<p>Se obtiene</p>
 
 <pre><code>@media (width: 400px) {
   .one {
@@ -1085,11 +1084,11 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 
-<p>También puedes usar &amp; en <em>mixins</em> para referenciar anidamiento que está fuera de la definición del <em>mixin</em>.</p>
+<p>También puedes usar &amp; en mixins para referenciar un anidamiento que está fuera de la definición del mixin.</p>
 
 <h2>Operaciones</h2>
 
-<p>Se puede operar sobre cualquier número, color o variable. Las operaciones deberían ser definidad entre paréntesis. A continuación un par de ejemplos:</p>
+<p>Se puede operar sobre cualquier número, color o variable. Las operaciones deberían estar definidas entre paréntesis. A continuación un par de ejemplos:</p>
 
 <pre><code>@base: 5%;
 @filler: (@base * 2);
@@ -1100,23 +1099,23 @@ background-color: (@base-color + #111);
 height: (100% / 2 + @filler);
 </code></pre>
 
-<p>La salida es mucho más simple de lo que cabe esperar—LESS entiende la diferencia entre colores y unidades. Si una unidad es usada en una operación, como aquí:</p>
+<p>La salida es mucho más simple de lo que cabe esperar—LESS entiende la diferencia entre colores y unidades. Si una unidad es usada en una operación, como por ejemplo aquí:</p>
 
 <pre><code>@var: (1px + 5);
 </code></pre>
 
 <p>LESS usará esa unidad en el resultado final—<code>6px</code> en este caso.</p>
 
-<p>También se permite el uso de varios paréntesis en las operaciones:</p>
+<p>También se permite el uso anidado de paréntesis en las operaciones:</p>
 
 <pre><code>width: ((@var + 5) * 2);
 </code></pre>
 
 <h2>Funciones</h2>
 
-<p>LESS proporciona una gran variedad de funciones que transforman colores, manipulan cadenas de caracteres o realizan operaciones matemáticas. Todas están documentadas en la referencia de las funciones.</p>
+<p>LESS proporciona una gran variedad de funciones que transforman colores, manipulan cadenas de caracteres o realizan operaciones matemáticas. Todas las funciones están documentadas en la sección sobre funciones.</p>
 
-<p>Su uso es baastante obvio. En el siguiente ejemplo se usa el método <em>percentage</em> para convertir el valor 0.5 en 50%, se incrementa la saturación de un color en un 5% y a continuación se selecciona un color de fondo que se ilumina un 25% y se modifica su perfil de color 8 grados:</p>
+<p>Su uso es bastante obvio. En el siguiente ejemplo se usa el método percentage para convertir el valor 0.5 en 50%, se incrementa la saturación de un color en un 5% y a continuación se selecciona un color de fondo que se ilumina un 25% y se modifica su perfil de color 8 grados:</p>
 
 <pre><code>@base: #f04615;
 @width: 0.5;
@@ -1130,7 +1129,7 @@ height: (100% / 2 + @filler);
 
 <h2>Espacio de nombres</h2>
 
-<p>Algunas veces, podrías querer agrupar tus variables o <em>mixins</em>, por organización, o simplemente por encapsular ti código. Puedes hacerlo de una manera bastante intuitivo en LESSSometimes, supongamos que quieres agrupar algunos <em>mixins</em> y variables bajo <code>#bundle</code>, para luego reutilizarlo o distribuirlo:</p>
+<p>Algunas veces, puedes querer agrupar variables o mixins, por tener tu código organizado, o encapsulado. Puedes hacerlo de una manera bastante intuitiva en LESS—supongamos que quieres agrupar algunos mixins y variables bajo el selector <code>#bundle</code>, para luego reutilizarlo o distribuirlo:</p>
 
 <pre><code>#bundle {
   .button () {
@@ -1144,7 +1143,7 @@ height: (100% / 2 + @filler);
 }
 </code></pre>
 
-<p>Ahora si queremos usar la clase <code>.button</code> en nuestra <code>#header a</code>, podemos hacer:</p>
+<p>Ahora si queremos usar la clase <code>.button</code> en nuestro selector <code>#header a</code>, podemos hacer:</p>
 
 <pre><code>#header a {
   color: orange;
@@ -1154,7 +1153,7 @@ height: (100% / 2 + @filler);
 
 <h2>Ámbito</h2>
 
-<p>El ámbito de las variables en LESS es muy similar al de la mayoría de los lenguaje de programación. Las variables y los <em>mixins</em> se buscan primero en el ámbito local, si no se encuentran, el compilador buscará en el ámbito inmediatamente superior, y así sucesivament.</p>
+<p>El ámbito de las variables en LESS es muy similar al de la mayoría de lenguajes de programación. Las variables y los mixins se buscan primero en el ámbito local, si no son encontrados, el compilador buscará en el ámbito inmediatamente superior, y así sucesivamente.</p>
 
 <pre><code>@var: red;
 
@@ -1178,7 +1177,7 @@ height: (100% / 2 + @filler);
 .class { color: black }
 </code></pre>
 
-<p>Los comentarios de una línea también son válidos en LESS, pero son 'silenciosos', es decir, no se mostrará el código CSS compilado:</p>
+<p>Los comentarios de una línea también son válidos en LESS, pero son 'silenciosos', es decir, no se mostrará el código CSS generado:</p>
 
 <pre><code>// Hola, soy un comentario silecioso, no aparecerá en tu código CSS
 .class { color: white }
@@ -1186,14 +1185,14 @@ height: (100% / 2 + @filler);
 
 <h2>Importación</h2>
 
-<p>Puedes importar tanto ficheros CSS como LESS. Únicamente se procesarán las sentencias de importación de ficheros LESS, las sentencias de importación se mantendrán. Si quieres importar un fichero CSS, y no quieres que LESS lo procese, solo tienes que especificar la extensión <code>.css</code>:</p>
+<p>Puedes importar ficheros CSS y LESS. Únicamente se procesarán las importaciones de ficheros LESS, las de ficheros CSS se mantendrán tal y como están. Si quieres importar un fichero CSS, y no quieres que LESS lo procese, solo tienes que especificar la extensión <code>.css</code>:</p>
 
 <pre><code>@import "lib.css";
 </code></pre>
 
-<p>La compilación solo realiza un de las sentencias de importación de fichero CSS: las sentencias de importación de fichero CSS son movidos a la parte superior de la hoja de estilo, justo después de las declaraciones.</p>
+<p>Cuando se compila el código se hace una única cosa con las importaciones de ficheros CSS: las sentencias de importación de ficheros CSS son desplazados a la parte superior de la hoja de estilo, justo después de las declaraciones @charset.</p>
 
-<p>El fichero de entrada con sentencias de importación:</p>
+<p>Ejemplo de fichero de entrada con sentencias de importación:</p>
 
 <pre><code>h1 { color: green; }
 @import "import/official-branding.css?urlParameter=23";
@@ -1205,7 +1204,7 @@ height: (100% / 2 + @filler);
 h1 { color: green; }
 </code></pre>
 
-<p>El contenido del fichero LESS importado es copiado en la hoja de estilo importador y compilado junto a él. Los ficheros importadores e importados comparten todos los <em>mixins</em>, espacios de nombres, variables y otras estructuras.</p>
+<p>El contenido del fichero LESS importado es copiado en la hoja de estilo que lo importa y compilado junto a él. Los ficheros importadores e importados comparten todos los mixins, espacios de nombres, variables y otras estructuras.</p>
 
 <p>Además, si en la sentecia de importación se han definido media queries, el contenido importado estará encerrado en una declaración <code>@Media</code>.</p>
 
@@ -1215,7 +1214,7 @@ h1 { color: green; }
 h1 { color: green; }
 </code></pre>
 
-<p>Los ficheros de importación principales en la parte superior del fichero library.less:</p>
+<p>Fichero principal que importa el fichero anterior library.less:</p>
 
 <pre><code>@import "library.less" screen and (max-width: 400px); // import with media queries
 @import "library.less"; // import without media queries
@@ -1225,7 +1224,7 @@ h1 { color: green; }
 }
 </code></pre>
 
-<p>Resultado obtenido:</p>
+<p>Se obtiene el siguiente resultado:</p>
 
 <pre><code>// Se corresponde a la importación con media queries
 @media screen and (max-width: 400px) {
@@ -1240,9 +1239,9 @@ h1 { color: green; }
 }
 </code></pre>
 
-<p>La sentencia de importación de fichero LESS no tiene que estar localizada en la parte superior de la hoja de estilo. Puedes colocarla dentro de reglas, <em>mixins</em> y otras estructuras LESS.</p>
+<p>Las sentencias de importación de ficheros LESS no tienen que estar situadas en la parte superior de la hoja de estilo. Puedes colocarla dentro de selectores, mixins y otras estructuras de LESS.</p>
 
-<p>Importación dentro de reglas:</p>
+<p>Ejemplo de importación dentro de un selector:</p>
 
 <pre><code>pre {
   @import "library.less";
@@ -1250,7 +1249,7 @@ h1 { color: green; }
 }
 </code></pre>
 
-<p>tanto varables como reglas definidas en &ldquo;library.less&rdquo; han sido copiados en la regla  <code>pre</code>:</p>
+<p>tanto las variables como reglas definidas en &ldquo;library.less&rdquo; han sido copiadas en la regla <code>pre</code>:</p>
 
 <pre><code>pre {
   color: #ff0000; // variable defined in library.less was available
@@ -1260,66 +1259,66 @@ pre h1 { // ruleset defined in library.less was nested into 'pre' ruleset
 }
 </code></pre>
 
-<p>En las versiones v1.3.0 - v1.3.3 <code>@import</code> importa un fichero varias veces y puedees sobrescribir este comportamiento con <code>@import-once</code>.</p>
+<p>En las versiones 1.3.0 - 1.3.3 <code>@import</code> importa un fichero tantas veces como haya sido especificado, puedes sobrescribir este comportamiento con <code>@import-once</code>.</p>
 
 <p>En la versión v1.4.0 <code>@import-once</code> ha sido eliminado y <code>@import</code> importa una única vez por defecto. Ésto significa lo siguiente</p>
 
-<p>   @import &ldquo;file.less&rdquo;;
-   @import &ldquo;file.less&rdquo;;</p>
+<pre><code>@import &ldquo;file.less&rdquo;;
+@import &ldquo;file.less&rdquo;;
+</code></pre>
 
-<p>The second file is ignored.</p>
+<p>El segundo fichero es ignorado.</p>
 
-<p>Any file that does not end with <code>.css</code> is considered less file and processed. In addition, if the file name has no extension or parameters, the &ldquo;.less&rdquo; suffix is added on the end. Both of these are equivalent:</p>
+<p>Cualquier fichero que no termine en <code>.css</code> se considerará un fichero less y por lo tanto se procesará. Además, si el fichero no tiene úna extensión definida, el sufijo &ldquo;.less&rdquo; será añadido al final. Las siguientes líneas son equivalentes:</p>
 
 <pre><code>@import "lib.less";
 @import "lib";
 </code></pre>
 
-<p>In v1.4.0 you can force a file to be interpreted as a particular type by specifying an option, e.g.</p>
+<p>En la versión 1.4.0 puedes forzar que un fichero sea interpretado de una manera concreta especificando un parámetro, por ejemplo:</p>
 
 <pre><code>@import (css) "lib";
 </code></pre>
 
-<p>Will output..</p>
+<p>Producirá la siguiente salida</p>
 
 <pre><code>@import "lib";
 </code></pre>
 
-<p>and</p>
+<p>y</p>
 
 <pre><code>@import (less) "lib.css";
 </code></pre>
 
-<p>Will import the lib.css file and treat it as less. If you specify a file is less and do not include an extension, none will be added.</p>
+<p>Importará el fichero lib.css y lo tratará como un fichero less. Si especificas que un fichero es less y no incluyes una extensión, no ser añadirá ninguno.</p>
 
-<h2>String interpolation</h2>
+<h2>Interpolación de strings</h2>
 
-<p>Variables can be embedded inside strings in a similar way to Ruby or PHP, with the <code>@{name}</code> construct:</p>
+<p>Las variables pueden ser incluidas dentro de un string, al igual que en Ruby o PHP, con el constructor <code>@{name}</code>:</p>
 
 <pre><code>@base-url: "http://assets.fnord.com";
 background-image: url("@{base-url}/images/bg.png");
 </code></pre>
 
-<h2>Escaping</h2>
+<h2>Escape</h2>
 
-<p>Sometimes you might need to output a CSS value which is either not valid CSS syntax,
-or uses proprietary syntax which LESS doesn&rsquo;t recognize.</p>
+<p>Algunas veces es necesario generar un valor CSS que no es válido dentro de la sintaxis de CSS, o usar sintaxis propietario que no reconoce LESS.</p>
 
-<p>To output such value, we place it inside a string prefixed with <code>~</code>, for example:</p>
+<p>Para generar tal valor, definimos un string precedida por <code>~</code>, por ejemplo:</p>
 
 <pre><code>.class {
   filter: ~"ms:alwaysHasItsOwnSyntax.For.Stuff()";
 }
 </code></pre>
 
-<p>This is called an &ldquo;escaped value&rdquo;, which will result in:</p>
+<p>A este símbolo se le llama&ldquo;valor de escape&rdquo;, cuyo resultado será:</p>
 
 <pre><code>.class {
   filter: ms:alwaysHasItsOwnSyntax.For.Stuff();
 }
 </code></pre>
 
-<p>Escaped values can use the interpolation exactly the same way as strings:</p>
+<p>Puedes usar la interpolación exactamente igual que con un string:</p>
 
 <pre><code>.class {
   @what: "Stuff";
@@ -1327,10 +1326,9 @@ or uses proprietary syntax which LESS doesn&rsquo;t recognize.</p>
 }
 </code></pre>
 
-<h2>Selector Interpolation</h2>
+<h2>Interpolación de selectores</h2>
 
-<p>If you want to use LESS variables inside selectors, you can do this by referencing the variable using <code>@{selector}</code> as
-in string interpolation. For example:</p>
+<p>Si quieres usar variables LESS como selector, debes referenciar a dicha variable usando <code>@{selector}</code> como en la interpolación de cadenas de caracteres. Por ejemplo:</p>
 
 <pre><code>@name: blocked;
 .@{name} {
@@ -1338,18 +1336,18 @@ in string interpolation. For example:</p>
 }
 </code></pre>
 
-<p>will output</p>
+<p>La salida será</p>
 
 <pre><code>.blocked {
     color: black;
 }
 </code></pre>
 
-<p>Note: prior to LESS 1.3.1 a <code>(~"@{name}")</code> type of selector was supported. Support for this will be removed in 1.4.0.</p>
+<p>Nota: en versiones anteriores a la 1.3.1 un selector del tipo <code>(~"@{name}")</code> era válido, en la versión 1.4.0 dejará de serlo.</p>
 
-<h2>Media Queries as Variables</h2>
+<h2>Media Queries como Variables</h2>
 
-<p>If you want to use less variables inside media, you can do this using the usual variable variable referencing syntax <code>@variable</code>. For example:</p>
+<p>Si quieres usar variables dentro de un media query, puedes hacerlo usando la sintáxis común para referenciar variables <code>@variable</code>. Por ejemplo:</p>
 
 <pre><code>@singleQuery: ~"(max-width: 500px)";
 @media screen, @singleQuery {
@@ -1359,7 +1357,7 @@ in string interpolation. For example:</p>
 }
 </code></pre>
 
-<p>compiles into:</p>
+<p>cuya compilación será:</p>
 
 <pre><code>@media screen, (max-width: 500px) {
   set {
@@ -1368,43 +1366,39 @@ in string interpolation. For example:</p>
 }
 </code></pre>
 
-<p>The variable must contain whole media query. This would cause an error: <code>@media screen and @partial {</code>.</p>
+<p>La variable debe contener una sentencia media query completa. En caso contrario se produciría un error: <code>@media screen y @partial {</code>.</p>
 
-<p>In 1.4.0, without strict maths off, you can also include variables in media values, e.g. <code>@media screen, (max-width: @width) {</code>.</p>
+<p>En la versión 1.4.0, con el modo strict math encendido, puedes incluir también variables dentro de un media query, por ejemplo <code>@media screen, (max-width: @width) {</code>.</p>
 
-<h2>JavaScript evaluation</h2>
+<h2>Evaluación de JavaScript</h2>
 
-<p>JavaScript expressions can be evaluated as values inside .less files. We recommend using caution with this feature
-as the LESS will not be compilable by ports and it makes the LESS harder to maintain. If possible, try to think of a
-function that can be added to achieve the same purpose and ask for it on github. We have plans to allow expanding the
-default functions available. However, if you still want to use JavaScript in .less, this is done by wrapping the expression
-with back-ticks:</p>
+<p>Se pueden evaluar expresiones JavaScript dentro de ficheros .less. Recomendamos usar con precaución esta opción, ya que LESS no será compilable por puertos lo que hace que LESS sea más difícil de mantener. Si es posible, intenta pensar en una función que pueda lograr el mismo objetivo o pregúntalo en github. Tenemos planeado permitir la extensión de las funciones por defecto. Sin embargo, si todavía quieres usar JavaScript en un fichero .less, debes encerrar las expresiones entre comillas simples:</p>
 
 <pre><code>@var: `"hello".toUpperCase() + '!'`;
 </code></pre>
 
-<p>Becomes:</p>
+<p>Se convierte en:</p>
 
 <pre><code>@var: "HELLO!";
 </code></pre>
 
-<p>Note that you may also use interpolation and escaping as with strings:</p>
+<p>Date cuenta que puede usar también la interpolación y el escape como en las cadenas de caracteres:</p>
 
 <pre><code>@str: "hello";
 @var: ~`"@{str}".toUpperCase() + '!'`;
 </code></pre>
 
-<p>Becomes:</p>
+<p>Se convierte en:</p>
 
 <pre><code>@var: HELLO!;
 </code></pre>
 
-<p>It is also possible to access the JavaScript environment:</p>
+<p>También puedes acceder a las variables JavaScript:</p>
 
 <pre><code>@height: `document.body.clientHeight`;
 </code></pre>
 
-<p>If you want to parse a JavaScript string as a hex color, you may use the <code>color</code> function:</p>
+<p>Si quieres parsear una cadena JavaScript como un color representado en hexadecimal, puedes usar la función <code>color</code>:</p>
 
 <pre><code>@color: color(`window.colors.baseColor`);
 @darkcolor: darken(@color, 10%);
@@ -1414,71 +1408,70 @@ with back-ticks:</p>
 </section>
 
 <section id="reference" class="page page-light">
-  <h1>Function Reference</h1>
+  <h1>Referencia de funciones</h1>
   <div class="content">
     <h1>Index</h1>
 
-<pre><code>escape(@string);               // URL encodes a string
-e(@string);                    // escape string content
-%(@string, values...);         // formats a string
+<pre><code>escape(@string);               // URL codifica una cadena
+e(@string);                    // escapa el contenido de una cadena
+%(@string, values...);         // formatea un string
 
-unit(@dimension, [@unit: ""]); // remove or change the unit of a dimension
-color(@string);                // parses a string to a color
-data-uri([mimetype,] url);       // * inlines a resource and falls back to url()
+unit(@dimension, [@unit: ""]); // elimina o cambia la unidad de una dimensión
+color(@string);                // parsea un string a un color
+data-uri([mimetype,] url);       // * codifica un recurso y devuelve la url()
 
-ceil(@number);                 // rounds up to an integer
-floor(@number);                // rounds down to an integer
-percentage(@number);           // converts to a %, e.g. 0.5 -&gt; 50%
-round(number, [places: 0]);    // rounds a number to a number of places
-sqrt(number);                  // * calculates square root of a number
-abs(number);                   // * absolute value of a number
-sin(number);                   // * sine function
-asin(number);                  // * arcsine - inverse of sine function
-cos(number);                   // * cosine function
-acos(number);                  // * arccosine - inverse of cosine function
-tan(number);                   // * tangent function
-atan(number);                  // * arctangent - inverse of tangent function
-pi();                          // * returns pi
-pow(@base, @exponent);     // * first argument raised to the power of the second argument
-mod(number, number);       // * first argument modulus second argument
+ceil(@number);                 // redondea hacia arriba un entero
+floor(@number);                // redondea hacia abajo un entero
+percentage(@number);           // convierte un número en un porcentaje %, por ejemplo 0.5 -&gt; 50%
+round(number, [places: 0]);    // redondea un número un número de posiciones
+sqrt(number);                  // * calcula la raiz cuadrada de un número
+abs(number);                   // * valor absoluto de un número
+sin(number);                   // * función seno
+asin(number);                  // * función arcoseno - inversa del seno
+cos(number);                   // * función coseno
+acos(number);                  // * función arcocoseno - inverso de coseno
+tan(number);                   // * función tangente
+atan(number);                  // * función arcotangente - inverso de tangente
+pi();                          // * devuelve pi
+pow(@base, @exponent);     // * primer argumento elevado al segundo argumento
+mod(number, number);       // * resto de la división entre el primer argumento y el segundo
+convert(number, units);    // * conversión entre tipos de números
+unit(number, units);       // * cambio de unidades sin convertir el número
+color(string);             // convierte un string o un valor de escape en un color
 
-convert(number, units);    // * converts between number types
-unit(number, units);       // *changes number units without converting it
-color(string);             // converts string or escaped value into color
+rgb(@r, @g, @b);                             // convierte en un color
+rgba(@r, @g, @b, @a);                        // convierte en un color
+argb(@color);                                // crea un #AARRGGBB
+hsl(@hue, @saturation, @lightness);          // crea un color
+hsla(@hue, @saturation, @lightness, @alpha); // crea un color
+hsv(@hue, @saturation, @value);              // crea un color
+hsva(@hue, @saturation, @value, @alpha);     // crea un color
 
-rgb(@r, @g, @b);                             // converts to a color
-rgba(@r, @g, @b, @a);                        // converts to a color
-argb(@color);                                // creates a #AARRGGBB
-hsl(@hue, @saturation, @lightness);          // creates a color
-hsla(@hue, @saturation, @lightness, @alpha); // creates a color
-hsv(@hue, @saturation, @value);              // creates a color
-hsva(@hue, @saturation, @value, @alpha);     // creates a color
+hue(@color);           // devuelve el tono de @color en el espacio HSL
+saturation(@color);    // devuelve la saturación de @color en el espacio HSL
+lightness(@color);     // devuelve la luminosidad de @color en el espacio HSL
+hsvhue(@color);        // * devuelve el tono de @color en el espacio HSV
+hsvsaturation(@color); // * devuelve la saturación de @color en el espacio HSV
+hsvvalue(@color);      // * devuelve la luminosidad de @color en el espacio HSV
+red(@color);           // devuelve el canal rojo de @color
+green(@color);         // devuelve el canal verde de @color
+blue(@color);          // devuelve el canal azul de @color
+alpha(@color);         // devuelve el canal alfa de @color
+luma(@color);          // devuelve la luma (brillo porceptual) de @color
 
-hue(@color);           // returns the `hue` channel of @color in the HSL space
-saturation(@color);    // returns the `saturation` channel of @color in the HSL space
-lightness(@color);     // returns the 'lightness' channel of @color in the HSL space
-hsvhue(@color);        // * returns the `hue` channel of @color in the HSV space
-hsvsaturation(@color); // * returns the `saturation` channel of @color in the HSV space
-hsvvalue(@color);      // * returns the 'value' channel of @color in the HSV space
-red(@color);           // returns the 'red' channel of @color
-green(@color);         // returns the 'green' channel of @color
-blue(@color);          // returns the 'blue' channel of @color
-alpha(@color);         // returns the 'alpha' channel of @color
-luma(@color);          // returns the 'luma' value (perceptual brightness) of @color
-
-saturate(@color, 10%);                  // return a color 10% points *more* saturated
-desaturate(@color, 10%);                // return a color 10% points *less* saturated
-lighten(@color, 10%);                   // return a color 10% points *lighter*
-darken(@color, 10%);                    // return a color 10% points *darker*
-fadein(@color, 10%);                    // return a color 10% points *less* transparent
-fadeout(@color, 10%);                   // return a color 10% points *more* transparent
-fade(@color, 50%);                      // return @color with 50% transparency
-spin(@color, 10);                       // return a color with a 10 degree larger in hue
-mix(@color1, @color2, [@weight: 50%]);  // return a mix of @color1 and @color2
-greyscale(@color);                      // returns a grey, 100% desaturated color
+saturate(@color, 10%);                  // devuelve un color un 10% *más* saturado
+desaturate(@color, 10%);                // devuelve un color un 10% *menos* saturado
+lighten(@color, 10%);                   // devuelve un color un 10% *más iluminado*
+darken(@color, 10%);                    // devuelve un color un 10% *más oscuro*
+fadein(@color, 10%);                    // devuelve un color un 10% *menos" transparente
+fadeout(@color, 10%);                   // devuelve un color un 10% *más* transparente
+fade(@color, 50%);                      // devuelve @color con una transparencia del 50%
+spin(@color, 10);                       // devuelve un color con 10 grados más de tono
+mix(@color1, @color2, [@weight: 50%]);  // devuelve la mezcla de @color1 y @color2
+greyscale(@color);                      // devuleve el color en la escala de grises, 100% desaturado
 contrast(@color1, [@darkcolor: black], [@lightcolor: white], [@threshold: 43%]); 
-                                        // return @darkcolor if @color1 is &gt; 43% luma
-                                        // otherwise return @lightcolor, see notes
+                                        // devuelve @darkcolor si @color1 es &gt; 43% de luma
+                                        // en otro caso devuelve @lightcolor, ver notas
 
 multiply(@color1, @color2);
 screen(@color1, @color2);
@@ -1490,99 +1483,98 @@ exclusion(@color1, @color2);
 average(@color1, @color2);
 negation(@color1, @color2);
 
-iscolor(@colorOrAnything);              // returns true if passed a color, including keyword colors
-isnumber(@numberOrAnything);            // returns true if a number of any unit
-isstring(@stringOrAnything);            // returns true if it is passed a string
-iskeyword(@keywordOrAnything);          // returns true if it is passed keyword
-isurl(@urlOrAnything);                  // returns true if it is a string and a url
-ispixel(@pixelOrAnything);              // returns true if it is a number and a px
-ispercentage(@percentageOrAnything);    // returns true if it is a number and a %
-isem(@emOrAnything);                    // returns true if it is a number and an em
-isunit(@numberOrAnything, "rem");       // * returns if a parameter is a number and is in a particular unit
+iscolor(@colorOrAnything);              // devuelve true si se le pasa un color, incluyendo las palabras claves de colores
+isnumber(@numberOrAnything);            // devuelve true si se le pasa un número en cualquier unidad
+isstring(@stringOrAnything);            // devuelve true si se le pasa un string
+iskeyword(@keywordOrAnything);          // devuelve true si se le pasa una palabra clave
+isurl(@urlOrAnything);                  // devuelve true si se le pasa una url
+ispixel(@pixelOrAnything);              // devuelve true si se le pasa una dimensión en px
+ispercentage(@percentageOrAnything);    // devuelve true si se le pasa una dimensión en %
+isem(@emOrAnything);                    // devuelve true si se le pasa una dimensión en em
+isunit(@numberOrAnything, "rem");       // * devuelve true si el primer parámetro es un número y está en la unidad especificada
 
-// * These functions are only available in the 1.4.0 beta
+// * Estas funciones solo están disponibles en la versión
+ 1.4.0 beta
 </code></pre>
 
-<h1>String functions</h1>
+<h1>Operaciones con strings</h1>
 
 <h3>escape</h3>
 
-<p>Applies <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoding</a> to special characters found in the input string.</p>
+<p>Realiza el <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoding</a> a los caracteres especiales encontrado en el string de entrada.</p>
 
 <ul>
-<li>Following characters are exceptions and not encoded: <code>,</code>, <code>/</code>, <code>?</code>, <code>@</code>, <code>&amp;</code>, <code>+</code>, <code>'</code>, <code>~</code>, <code>!</code> and <code>$</code>.</li>
-<li>Most common encoded characters are: <code>&lt;space&gt;</code>, <code>#</code>, <code>^</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>|</code>, <code>:</code>, <code>&gt;</code>, <code>&lt;</code>, <code>;</code>, <code>]</code>, <code>[</code> and <code>=</code>.</li>
+<li>Los siguientes caracteres son excepciones que no serán codificados:: <code>,</code>, <code>/</code>, <code>?</code>, <code>@</code>, <code>&amp;</code>, <code>+</code>, <code>'</code>, <code>~</code>, <code>!</code> y <code>$</code>.</li>
+<li>Los caracteres codificados más comunes son: <code>&lt;space&gt;</code>, <code>#</code>, <code>^</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>|</code>, <code>:</code>, <code>&gt;</code>, <code>&lt;</code>, <code>;</code>, <code>]</code>, <code>[</code> y <code>=</code>.</li>
 </ul>
 
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>string</code>: A string to escape</li>
+<li><code>string</code>: Un string a escapar</li>
 </ul>
 
 
-<p>Returns: escaped <code>string</code> content without quotes.</p>
+<p>Devuelve: el contenido de <code>string</code> a escapar sin comillas.</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>escape('a=1')
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>a%3D1
 </code></pre>
 
-<p>Note: Function behavior if a parameter is non-string parameters is not defined. Current implementation returns <code>undefined</code> on color and unchanged input on any other kind of argument. This behaviour should not be relied on and can change in the future.</p>
+<p>Nota: El comportamiento de la función para parámetros que no son strings no está definido. La función devuelve <code>undefined</code> si se le pasa un color y la entrada no cambia para cualquier otro tipo de argumento. Este comportamiento no está asegurado y podría cambiar en el futuro.</p>
 
 <h3>e</h3>
 
-<p>CSS escaping similar to <code>~"value"</code> syntax. It expects string as a parameter and return its content as is, but without quotes. It can be used to output CSS value which is either not valid CSS syntax, or uses proprietary syntax which LESS doesn�t recognize.</p>
+<p>Escape CSS similar a la sintáxis de <code>~"value"</code>. Se le pasa un string como parámetro y devuelve su contenido pero sin comillas. Puede usarse para obtener un valor CSS que todavía no es código CSS válido, o usa sintáxis propietaria que LESS no reconoce.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>string</code>: A string to escape</li>
+<li><code>string</code>: Un string a escapar</li>
 </ul>
 
 
-<p>Returns: <code>string</code> content without quotes.</p>
+<p>_Devuelve: contenido del <code>string</code> sin comillas.</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>filter: ~"ms:alwaysHasItsOwnSyntax.For.Stuff()";
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>filter: ms:alwaysHasItsOwnSyntax.For.Stuff();
 </code></pre>
 
-<p>Note: The function accepts also <code>~""</code> escaped values and numbers as parameters. Anything else returns an error.</p>
+<p>Nota: La función también acepta valores escapados <code>~""</code> y números. Cualquier otro tipo de parámetro produce un error.</p>
 
 <h3>% format</h3>
 
-<p>The function <code>%("format", arguments ...)</code> formats a string. The first argument is string with placeholders. All placeholders start with percentage symbol <code>%</code> followed by letter <code>s</code>,<code>S</code>,<code>d</code>,<code>D</code>,<code>a</code>, or <code>A</code>. Remaining arguments contain expressions to replace placeholders. If you need to print the percentage symbol, escape it by another percentage <code>%%</code>.</p>
+<p>La función <code>%("format", arguments ...)</code> formatea un string. El primer argumento es un string con marcadores. Todos los marcadores comienzan con el símbolo <code>%</code> seguido de una letra <code>s</code>,<code>S</code>,<code>d</code>,<code>D</code>,<code>a</code>, o <code>A</code>. Los argumentos restantes contienen las expresiones que van a reemplazar a los marcadores. Si necesitas imprimir un símbolo de porcentaje, puedes hacerlo añadiendo otro símbolo de porcentaje <code>%%</code>.</p>
 
-<p>Use uppercase placeholders if you need to escape special characters into their utf-8 escape codes.
-The function escapes all special characters except <code>()'~!</code>. Space is encoded as <code>%20</code>. Lowercase placeholders leave special characters as they are.</p>
+<p>Usa marcadores en mayúsculas si necesitas escapar caracteres especiales usando su código en utf-8. La función escapa un carácter especial salvo <code>()'~!</code>. El espacio se condifica como <code>%20</code>. Los marcadores en miníscula no convertirán los caracteres especiales.</p>
 
-<p>Placeholders:
-* d, D, a, A - can be replaced by any kind of argument (color, number, escaped value, expression, &hellip;). If you use them in combination with string, the whole string will be used - including its quotes. However, the quotes are placed into the string as they are, they are not escaped by &ldquo;/&rdquo; nor anything similar.
-* s, S - can be replaced by any kind of argument except color. If you use them in combination with string, only the string value will be used - string quotes are omitted.</p>
+<p>Marcadores:
+* d, D, a, A - pueden ser remplazados por cualquier tipo de argumento (color, número, valor de escape, expresión, &hellip;). Si las usas con un string, se usará el string completo - incluyendo las comillas. Sin embargo, las comillas no serán modificadas ni escapadas por &ldquo;/&rdquo; ni nada similar. * s, S - puede ser remplazado por cualquier tipo oo argumento excepto por colores. Si las usas en combinación con un string, solo el valor del string será usado - las comillas del string se omitirán</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>string</code>: format string with placeholders,</li>
-<li><code>anything</code>* : values to replace placeholders.</li>
+<li><code>string</code>: string a formatear con marcadores,</li>
+<li><code>anything</code>* : valores que van a reemplazar a los marcadores.</li>
 </ul>
 
 
-<p>Returns: formatted <code>string</code>.</p>
+<p>Devuelve: <code>string</code> formateado.</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>format-a-d: %("repetitions: %a file: %d", 1 + 2, "directory/file.less");
 format-a-d-upper: %('repetitions: %A file: %D', 1 + 2, "directory/file.less");
@@ -1590,7 +1582,7 @@ format-s: %("repetitions: %s file: %s", 1 + 2, "directory/file.less");
 format-s-upper: %('repetitions: %S file: %S', 1 + 2, "directory/file.less");
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>format-a-d: "repetitions: 3 file: "directory/file.less"";
 format-a-d-upper: "repetitions: 3 file: %22directory%2Ffile.less%22";
@@ -1598,317 +1590,317 @@ format-s: "repetitions: 3 file: directory/file.less";
 format-s-upper: "repetitions: 3 file: directory%2Ffile.less";
 </code></pre>
 
-<h1>Misc functions</h1>
+<h1>Otras funciones</h1>
 
 <h3>color</h3>
 
-<p>Parses a color, so a string representing a color becomes a color.</p>
+<p>Parsea un color, convierte un string cuyo contenido representa un color en ese color.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>string</code>: A string of the color</li>
+<li><code>string</code>: Un string que representa un color</li>
 </ul>
 
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>color("#aaa");
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#aaa
 </code></pre>
 
 <h3>unit</h3>
 
-<p>Remove or change the unit of a dimension</p>
+<p>Elimina o cambia la unidad de una dimensión</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>dimension</code>: A number, with or without a dimension</li>
-<li><code>unit</code>: Optional: the unit to change to, or if omitted it will remove the unit</li>
+<li><code>dimension</code>: Un número, con o sin una dimensión</li>
+<li><code>unit</code>: Opcional: la unidad a la que se va a convertir, si se omite se eliminará la unidad</li>
 </ul>
 
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>unit(5, px)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>5px
 </code></pre>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>unit(5em)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>5
 </code></pre>
 
 <h3>data-uri</h3>
 
-<p>Inlines a resource and falls back to <code>url()</code> if the ieCompat option is on and the resource is too large, or if you use the function in the browser. If the mime is not given then node uses the mime package to determine the correct mime type.</p>
+<p>Permite la inclusión de pequeños elementos de datos en línea, como si fueran referenciados a una fuente externa <code>url()</code> si la opción ieCompat esta activada y el recurso es demasiado grande, o si usas la función en el navegador. Si no se proporciona un tipo mime, node usa el paquete mime para determinar el tipo mime correcto.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>mimetype</code>: A mime type string. Optional.</li>
-<li><code>url</code>: The URL of the file to inline.</li>
+<li><code>mimetype</code>: un string que representa el tipo mime. Opcional</li>
+<li><code>url</code>: La URL del fichero a incluir.</li>
 </ul>
 
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>data-uri('../data/image.jpg');
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>url('data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==');
 </code></pre>
 
-<p>Output in the browser:</p>
+<p>Salida en el navegador:</p>
 
 <pre><code>url('../data/image.jpg');
 </code></pre>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>data-uri('image/jpeg;base64', '../data/image.jpg');
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>url('data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==');
 </code></pre>
 
-<h1>Math functions</h1>
+<h1>Operaciones matemáticas</h1>
 
 <h3>ceil</h3>
 
-<p>Rounds up to the next highest integer.</p>
+<p>Redondea el entero inmediatamente superior.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: A floating point number.</li>
+<li><code>number</code>: Un número decimal.</li>
 </ul>
 
 
-<p>Returns: <code>integer</code></p>
+<p>Devuelve: <code>integer</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>ceil(2.4)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>3
 </code></pre>
 
 <h3>floor</h3>
 
-<p>Rounds down to the next lowest integer.</p>
+<p>Redondea el entero inmediatamente inferior.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: A floating point number.</li>
+<li><code>number</code>: Un número decimal</li>
 </ul>
 
 
-<p>Returns: <code>integer</code></p>
+<p>Devuelve: <code>integer</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>floor(2.6)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>2
 </code></pre>
 
 <h3>percentage</h3>
 
-<p>Converts a floating point number into a percentage string.</p>
+<p>Representa un número decimal como un porcentaje.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: A floating point number.</li>
+<li><code>number</code>: Un número decimal</li>
 </ul>
 
 
-<p>Returns: <code>string</code></p>
+<p>Devuelve: <code>string</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>percentage(0.5)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>50%
 </code></pre>
 
 <h3>round</h3>
 
-<p>Applies rounding.</p>
+<p>Redondea un número.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: A floating point number.</li>
-<li><code>decimalPlaces</code>: Optional: The number of decimal places to round to. Defaults to 0.</li>
+<li><code>number</code>: Un número decimal.</li>
+<li><code>decimalPlaces</code>: Opcional: El número de decimales a redondear. Por defecto es 0.</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Devuelve: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>round(1.67)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>2
 </code></pre>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>round(1.67, 1)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>1.7
 </code></pre>
 
 <h3>sqrt</h3>
 
-<p>Calculates square root of a number. Keeps units as they are.</p>
+<p>Calcula la raiz cuadrada de un número. No modifica las unidades.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: A floating point number.</li>
+<li><code>number</code>: Un número decimal.</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Devuelve: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>sqrt(25cm)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>5cm
 </code></pre>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>sqrt(18.6%)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>4.312771730569565%;
 </code></pre>
 
 <h3>abs</h3>
 
-<p>Calculates absolute value of a number. Keeps units as they are.</p>
+<p>Calcula el valor absoluto de un número. No modifica las unidades.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: A floating point number.</li>
+<li><code>number</code>: Un número decimal.</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Salida: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>abs(25cm)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>25cm
 </code></pre>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>abs(-18.6%)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>18.6%;
 </code></pre>
 
 <h3>sin</h3>
 
-<p>Calculates sine function. Assumes radians on numbers without units.</p>
+<p>Calcula la función seno. Usa radianes si se le pasa un número sin unidades.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: A floating point number.</li>
+<li><code>number</code>: Un número decimal.</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Salida: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>sin(1); // sine of 1 radian
 sin(1deg); // sine of 1 degree
 sin(1grad); // sine of 1 gradian
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
-<pre><code>0.8414709848078965; // sine of 1 radian
-0.01745240643728351; // sine of 1 degree
-0.015707317311820675; // sine of 1 gradian
+<pre><code>0.8414709848078965; // seno de 1 radian
+0.01745240643728351; // seno de 1 grado
+0.015707317311820675; // seno de 1 gradian
 </code></pre>
 
 <h3>asin</h3>
 
-<p>Calculates arcsine (inverse of sine) function. Returns number in radians e.g. a number between -&pi;/2 and &pi;/2.</p>
+<p>Calcula la función arcoseno (inversa del seno). Devuelve un número en radianes, un número entre -&pi;/2 and &pi;/2.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: A floating point number from [-1, 1] interval.</li>
+<li><code>number</code>: Un número decimal comprendido en el intervalo [-1, 1].</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Salida: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>asin(-0.8414709848078965)
 asin(0) 
 asin(2)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>-1rad
 0rad
@@ -1917,52 +1909,52 @@ NaNrad
 
 <h3>cos</h3>
 
-<p>Calculates cosine function. Assumes radians on numbers without units.</p>
+<p>Calcula la función coseno. Usa radianes si no se especifica ninguna unidad.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: A floating point number.</li>
+<li><code>number</code>: Un número decimal.</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Salida: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
-<pre><code>cos(1) // cosine of 1 radian
-cos(1deg) // cosine of 1 degree
-cos(1grad) // cosine of 1 gradian
+<pre><code>cos(1) // coseno de 1 radian
+cos(1deg) // coseno de 1 grado
+cos(1grad) // coseno de 1 gradian
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
-<pre><code>0.5403023058681398 // cosine of 1 radian
-0.9998476951563913 // cosine of 1 degree
-0.9998766324816606 // cosine of 1 gradian
+<pre><code>0.5403023058681398 // coseno de 1 radian
+0.9998476951563913 // coseno de 1 grado
+0.9998766324816606 // coseno de 1 gradian
 </code></pre>
 
 <h3>acos</h3>
 
-<p>Calculates arccosine (inverse of cosine) function. Returns number in radians e.g. a number between 0 and &pi;.</p>
+<p>Calcula la función arcocoseno (inverso del coseno). Devuelve un número en radianes, un número entre 0 y &pi;.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: A floating point number from [-1, 1] interval.</li>
+<li><code>number</code>: Un número decimal en el intervalo [-1, 1].</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Salida: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>acos(0.5403023058681398)
 acos(1) 
 acos(2)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>1rad
 0rad
@@ -1971,52 +1963,52 @@ NaNrad
 
 <h3>tan</h3>
 
-<p>Calculates tangent function. Assumes radians on numbers without units.</p>
+<p>Calcula la función tangente. Usa radianes si no se especifica ninguna unidad.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: A floating point number.</li>
+<li><code>number</code>: Un número decimal.</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Salida: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
-<pre><code>tan(1) // tangent of 1 radian
-tan(1deg) // tangent of 1 degree
-tan(1grad) // tangent of 1 gradian
+<pre><code>tan(1) // tangente de 1 radian
+tan(1deg) // tangente de 1 grado
+tan(1grad) // tangente de 1 gradian
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
-<pre><code>1.5574077246549023 // tangent of 1 radian
-0.017455064928217585 // tangent of 1 degree
-0.015709255323664916 // tangent of 1 gradian
+<pre><code>1.5574077246549023 // tangente de 1 radian
+0.017455064928217585 // tangente de 1 grado
+0.015709255323664916 // tangente de 1 gradian
 </code></pre>
 
 <h3>atan</h3>
 
-<p>Calculates arctangent (inverse of tangent) function. Returns number in radians e.g. a number between -&pi;/2 and &pi;/2.</p>
+<p>Calcula la función arcotangente (inversa de la tangente). Devuelve un número en radianes, un número entre -&pi;/2 and &pi;/2.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: A floating point number.</li>
+<li><code>number</code>: Un número decimal.</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Salida: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>atan(-1.5574077246549023)
 atan(0)
-round(atan(22), 6) // arctangent of 22 rounded to 6 decimal places
+round(atan(22), 6) // arcotangente de 22 redondeado a 6 decimales
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>-1rad
 0rad
@@ -2025,42 +2017,42 @@ round(atan(22), 6) // arctangent of 22 rounded to 6 decimal places
 
 <h3>pi</h3>
 
-<p>Returns &pi; (pi);</p>
+<p>Devuelve el valor de &pi; (pi);</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li>none</li>
+<li>ninguno</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Salida: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>pi()
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>3.141592653589793
 </code></pre>
 
 <h3>pow</h3>
 
-<p>Returns the value of the first argument raised to the power of the second argument. Returned value has the same dimension as the first parameter and the dimension of the second parameter is ignored.</p>
+<p>Devuelve el valor del primer argumento elevado a la potencia del segundo argumento. El resultado es devuelto en la misma unidad del primer argumento ignorando la del segundo parámetro.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: base -a floating point number.</li>
-<li><code>number</code>: exponent - a floating point number.</li>
+<li><code>number</code>: base - un número decimal.</li>
+<li><code>number</code>: exponente - un número decimal.</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Salida: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>pow(0cm, 0px)
 pow(25, -2)
@@ -2069,7 +2061,7 @@ pow(-25, 0.5)
 pow(-25%, -0.5)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>1cm
 0.0016
@@ -2080,26 +2072,26 @@ NaN%
 
 <h3>mod</h3>
 
-<p>Returns the value of the first argument modulus second argument. Returned value has the same dimension as the first parameter, the dimension of the second parameter is ignored. The function is able to handle also negative and floating point numbers.</p>
+<p>Devuelve el resto de la división entera entre el primer argumento y el segundo argumento. El resultado es devuelto en la misma unidad del primer argumento ignorando la del segundo parámetro. La función es capaz de manejar números negativos y decimales.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: a floating point number.</li>
-<li><code>number</code>: a floating point number.</li>
+<li><code>number</code>: un número decimal.</li>
+<li><code>number</code>: un número decimal.</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Salida: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>mod(0cm, 0px)
 mod(11cm, 6px);
 mod(-26%, -5);
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>NaNcm;
 5cm
@@ -2108,31 +2100,31 @@ mod(-26%, -5);
 
 <h3>convert</h3>
 
-<p>Converts numbers from one type into another. First argument contains number with units and second argument contains units. If both units are compatible, the number is converted. If they are not compatible, function returns first argument without modifying it.</p>
+<p>Pasa de una unidad a otra. El primer argumento contiene un número con unidades y el segundo argumento contiene una nueva unidad. Si ambas unidades son compatibles, el número sera convertido. Si no son compatibles, la función devuelve el primer argumento sin modificar.</p>
 
-<p>Compatible unit groups:
-* lengths: <code>m</code>, <code>cm</code>, <code>mm</code>, <code>in</code>, <code>pt</code> and <code>pc</code>,
-* time: <code>s</code> and <code>ms</code>,
-* angle: <code>rad</code>, <code>deg</code>, <code>grad</code> and <code>turn</code>.</p>
+<p>Unidades compatibles:
+* longitud: <code>m</code>, <code>cm</code>, <code>mm</code>, <code>in</code>, <code>pt</code> y <code>pc</code>,
+* tiempo: <code>s</code> y <code>ms</code>,
+* ángulo: <code>rad</code>, <code>deg</code>, <code>grad</code> y <code>turn</code>.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: a floating point number with units.</li>
-<li><code>identifier</code>, <code>string</code> or <code>escaped value</code>: units</li>
+<li><code>number</code>: un número decimal con unidades.</li>
+<li><code>identifier</code>, <code>string</code> o <code>escaped value</code>: unidades</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Salida: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>convert(9s, "ms")
 convert(14cm, mm)
-convert(8, mm) // incompatible unit types
+convert(8, mm) // unidades incompatibles
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>9000ms
 140mm
@@ -2141,25 +2133,25 @@ convert(8, mm) // incompatible unit types
 
 <h3>Unit</h3>
 
-<p>Returns number with different units. Only units are changed, number itself is not converted. The function assumes that second parameter contains valid unit type.</p>
+<p>Cambia la unidad de un número. Únicamente se modifica las unidades, el número no se convierte. La función asume que el segundo parámetro contienen un tipo de unidad válido.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>number</code>: a floating point number with units.</li>
-<li><code>identifier</code> or <code>escaped value</code>: units.</li>
+<li><code>number</code>: un número decimal con unidades.</li>
+<li><code>identifier</code> or <code>escaped value</code>: unidades.</li>
 </ul>
 
 
-<p>Returns: <code>number</code></p>
+<p>Salida: <code>number</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>unit(9s, ~"ms")
 unit(-9, m)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>9ms
 -9m
@@ -2167,674 +2159,676 @@ unit(-9, m)
 
 <h3>Color</h3>
 
-<p>Converts a string or escaped value into a color. The input must contain color in hexadecimal or shorthand representation.</p>
+<p>Convierte un string o valor escapado en un color. La entrada debe contener un color en hexadecimal o una representación acortada.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>identifier</code> or <code>escaped value</code> with valid color in hexadecimal or shorthand representation.</li>
+<li><code>identifier</code> o <code>escaped value</code> con un color válido en hexadecimal o representación acortada.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>color("#445566")
 color(~"#123")
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#445566
 #112233
 </code></pre>
 
-<h1>Color functions</h1>
+<h1>Funciones Color</h1>
 
-<h2>Color definition</h2>
+<h2>Definición de Color</h2>
 
 <h3>rgb</h3>
 
-<p>Creates an opaque color object from decimal red, green and blue (RGB) values. Literal color values in standard HTML/CSS formats may also be used to define colors, for example <code>#ff0000</code>.</p>
+<p>Crea un color opaco a partir de valores decimales para los componentes rojo, verde y azul (RGB). También se puede usar los valores de color en HTML/CSS estándar, por ejemplo <code>#ff0000</code>.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>red</code>: An integer 0-255 or percentage 0-100%.</li>
-<li><code>green</code>: An integer 0-255 or percentage 0-100%.</li>
-<li><code>blue</code>: An integer 0-255 or percentage 0-100%.</li>
+<li><code>red</code>: Un entero entre 0-255 o un porcentaje entre 0-100%.</li>
+<li><code>green</code>: Un entero entre 0-255 o un porcentaje entre 0-100%.</li>
+<li><code>blue</code>: Un entero entre 0-255 o un porcentaje entre 0-100%.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>rgb(90, 129, 32)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#5a8120
 </code></pre>
 
 <h3>rgba</h3>
 
-<p>Creates a transparent color object from decimal red, green, blue and alpha (RGBA) values.</p>
+<p>Crea un color transparente a partir de valores decimales para los componentes rojo, verde, azul y alfa (RGBA).</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>red</code>: An integer 0-255 or percentage 0-100%.</li>
-<li><code>green</code>: An integer 0-255 or percentage 0-100%.</li>
-<li><code>blue</code>: An integer 0-255 or percentage 0-100%.</li>
-<li><code>alpha</code>: An number 0-1 or percentage 0-100%.</li>
+<li><code>red</code>: Un entero entre 0-255 o un porcentaje entre 0-100%.</li>
+<li><code>green</code>: Un entero entre 0-255 o un porcentaje entre 0-100%.</li>
+<li><code>blue</code>: Un entero entre 0-255 o un porcentaje entre 0-100%.</li>
+<li><code>alpha</code>: Un número decimal entre 0-1 o un porcentaje entre 0-100%.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>rgba(90, 129, 32, 0.5)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>rgba(90, 129, 32, 0.5)
 </code></pre>
 
 <h3>argb</h3>
 
-<p>Creates a hex representation of a color in <code>#AARRGGBB</code> format (<strong>NOT</strong> <code>#RRGGBBAA</code>!). This format is used in Internet Explorer, and .NET and Android development.</p>
+<p>Genera el código hexadecimal de un color en formato <code>#AARRGGBB</code> (<strong>NO</strong> <code>#RRGGBBAA</code>!). Este formato es usado en Internet Explorer, .NET y Android.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>string</code></p>
+<p>Salida: <code>string</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>argb(rgba(90, 23, 148, 0.5));
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#805a1794
 </code></pre>
 
 <h3>hsl</h3>
 
-<p>Creates an opaque color object from hue, saturation and lightness (HSL) values.</p>
+<p>Crea un color opaco a partir de los valores de tono, saturación y luminosidad (HSL).</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>hue</code>: An integer 0-360 representing degrees.</li>
-<li><code>saturation</code>: A percentage 0-100% or number 0-1.</li>
-<li><code>lightness</code>: A percentage 0-100% or number 0-1.</li>
+<li><code>hue</code>: Un entero entre 0-360 representando un grado.</li>
+<li><code>saturation</code>: Un porcentaje entre 0-100% o un número entre 0-1.</li>
+<li><code>lightness</code>: Un porcentaje entre 0-100% o un número entre 0-1.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>hsl(90, 100%, 50%)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#80ff00
 </code></pre>
 
-<p>This is useful if you want to create a new color based on another color&rsquo;s channel, for example:</p>
+<p>Es útil si deseas crear un color basado en el canal de otro color, por ejemplo:</p>
 
 <pre><code>@new: hsl(hue(@old), 45%, 90%);
 </code></pre>
 
-<p><code>@new</code> will have <code>@old</code>&rsquo;s <em>hue</em>, and its own saturation and lightness.</p>
+<p><code>@new</code> tendrá el <em>tono</em> de <code>@old</code>, y su propios valores de saturación y luminosidad.</p>
 
 <h3>hsla</h3>
 
-<p>Creates a transparent color object from hue, saturation, lightness and alpha (HSLA) values.</p>
+<p>Crea un color transparente a partir de los valores de tono, saturación, luminosidad y alfa (HSL).</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>hue</code>: An integer 0-360 representing degrees.</li>
-<li><code>saturation</code>: A percentage 0-100% or number 0-1.</li>
-<li><code>lightness</code>: A percentage 0-100% or number 0-1.</li>
-<li><code>alpha</code>: A percentage 0-100% or number 0-1.</li>
+<li><code>hue</code>: Un entereo entre 0-360 representando un grado.</li>
+<li><code>saturation</code>: Un porcentaje entre 0-100% o un número entre 0-1.</li>
+<li><code>lightness</code>: Un porcentaje entre 0-100% o un número entre 0-1.</li>
+<li><code>alpha</code>: Un porcentaje entre 0-100% o un número entre 0-1.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>hsl(90, 100%, 50%, 0.5)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>rgba(128, 255, 0, 0.5)
 </code></pre>
 
 <h3>hsv</h3>
 
-<p>Creates an opaque color object from hue, saturation and value (HSV) values. Note that this is not the same as <code>hsl</code>, and is a color space available in Photoshop.</p>
+<p>Crea un color opaco a partir de los valores de tono, saturación y valor (HSV). Nótese que es diferente a <code>hsl</code>, y es un modelo de color disponible en Photoshop.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>hue</code>: An integer 0-360 representing degrees.</li>
-<li><code>saturation</code>: A percentage 0-100% or number 0-1.</li>
-<li><code>value</code>: A percentage 0-100% or number 0-1.</li>
+<li><code>hue</code>: Un entereo entre 0-360 representando un grado.</li>
+<li><code>saturation</code>: Un porcentaje entre 0-100% o un número entre 0-1.</li>
+<li><code>value</code>: Un porcentaje entre 0-100% o un número entre 0-1.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>hsv(90, 100%, 50%)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#408000
 </code></pre>
 
 <h3>hsva</h3>
 
-<p>Creates a transparent color object from hue, saturation, value and alpha (HSVA) values. Note that this is not the same as <code>hsla</code>, and is a color space available in Photoshop.</p>
+<p>Crea un color transparente a partir de los valores de tono, saturación, valor y alfa (HSVA). Note que es diferente a <code>hsl</code>, y es un modelo de color disponible en Photoshop.</p>
 
-<p>Parameters:</p>
+
+<p>Parámetros:</p>
 
 <ul>
-<li><code>hue</code>: An integer 0-360 representing degrees.</li>
-<li><code>saturation</code>: A percentage 0-100% or number 0-1.</li>
-<li><code>value</code>: A percentage 0-100% or number 0-1.</li>
-<li><code>alpha</code>: A percentage 0-100% or number 0-1.</li>
+<li><code>hue</code>: Un entereo entre 0-360 representando un grado.</li>
+<li><code>saturation</code>: Un porcentaje entre 0-100% o un número entre 0-1.</li>
+<li><code>value</code>: Un porcentaje entre 0-100% o un número entre 0-1.</li>
+<li><code>alpha</code>: Un porcentaje entre 0-100% o un número entre 0-1.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>hsva(90, 100%, 50%, 0.5)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>rgba(64, 128, 0, 0.5)
 </code></pre>
 
-<h2>Color channel information</h2>
+<h2>Información sobre el canal de color</h2>
 
 <h3>hue</h3>
 
-<p>Extracts the hue channel of a color object.</p>
+<p>Obtiene el tono de un color.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>integer</code> 0-360</p>
+<p>Salida: <code>integer</code> 0-360</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>hue(hsl(90, 100%, 50%))
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>90
 </code></pre>
 
 <h3>saturation</h3>
 
-<p>Extracts the saturation channel of a color object.</p>
+<p>Obtiene la saturación de un color.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>percentage</code> 0-100</p>
+<p>Salida: <code>percentage</code> 0-100</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>saturation(hsl(90, 100%, 50%))
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>100%
 </code></pre>
 
 <h3>lightness</h3>
 
-<p>Extracts the lightness channel of a color object.</p>
+<p>Obtiene la luminosidad de un color.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>percentage</code> 0-100</p>
+<p>Salida: <code>percentage</code> 0-100</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>lightness(hsl(90, 100%, 50%))
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>50%
 </code></pre>
 
 <h3>hsvhue</h3>
 
-<p>Extracts the hue channel of a color object in the HSV color space.</p>
+<p>Obtiene el tono de un color en el modelo HSV.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>integer</code> 0-360</p>
+<p>Salida: <code>integer</code> 0-360</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>hsvhue(hsv(90, 100%, 50%))
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>90
 </code></pre>
 
 <h3>hsvsaturation</h3>
 
-<p>Extracts the saturation channel of a color object in the HSV color space.</p>
+<p>Obtiene la saturación de un color en el modelo HSV.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>percentage</code> 0-100</p>
+<p>Salida: <code>percentage</code> 0-100</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>hsvsaturation(hsv(90, 100%, 50%))
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>100%
 </code></pre>
 
 <h3>hsvvalue</h3>
 
-<p>Extracts the value channel of a color object in the HSV color space.</p>
+<p>Obtiene el valor de un color en el modelo HSV.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>percentage</code> 0-100</p>
+<p>Salida: <code>percentage</code> 0-100</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>hsvvalue(hsv(90, 100%, 50%))
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>50%
 </code></pre>
 
 <h3>red</h3>
 
-<p>Extracts the red channel of a color object.</p>
+<p>Obtiene el componente rojo de un color.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>integer</code> 0-255</p>
+<p>Salida: <code>integer</code> 0-255</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>red(rgb(10, 20, 30))
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>10
 </code></pre>
 
 <h3>green</h3>
 
-<p>Extracts the green channel of a color object.</p>
+<p>Obtiene el componente verde de un color.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>integer</code> 0-255</p>
+<p>Salida: <code>integer</code> 0-255</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>green(rgb(10, 20, 30))
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>20
 </code></pre>
 
 <h3>blue</h3>
 
-<p>Extracts the blue channel of a color object.</p>
+<p>Obtiene el componente azul de un color.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>integer</code> 0-255</p>
+<p>Salida: <code>integer</code> 0-255</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>blue(rgb(10, 20, 30))
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>30
 </code></pre>
 
 <h3>alpha</h3>
 
-<p>Extracts the alpha channel of a color object.</p>
+<p>Obtiene el componente alfa de un color.</p>
 
-<p>Parameters:</p>
+
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>float</code> 0-1</p>
+<p>Salida: <code>float</code> 0-1</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>alpha(rgba(10, 20, 30, 0.5))
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>0.5
 </code></pre>
 
 <h3>luma</h3>
 
-<p>Calculates the <a href="http://en.wikipedia.org/wiki/Luma_(video">luma</a>) (perceptual brightness) of a color object. Uses SMPTE C / Rec. 709 coefficients, as recommended in <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>. This calculation is also used in the contrast function.</p>
+<p>Calcula la <a href="http://en.wikipedia.org/wiki/Luma_(video">luma</a> (brillo perceptual) de un color. Usa coeficientes SMPTE C / Rec. 709, como se recomienda en <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>. Este calculo también se usa en el contraste de funciones.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>percentage</code> 0-100%</p>
+<p>Salida: <code>percentage</code> 0-100%</p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>luma(rgb(100, 200, 30))
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>65%
 </code></pre>
 
-<h2>Color operations</h2>
+<h2>Operaciones con colores</h2>
 
-<p>Color operations generally take parameters in the same units as the values they are changing, and percentage are handled as absolutes, so increasing a 10% value by 10% results in 20%, not 11%, and values are clamped to their allowed ranges; they do not wrap around. Where return values are shown, we&rsquo;ve also shown formats that make it clear what each function has done, in addition to the hex versions that you will usually be be working with.</p>
+<p>Las operaciones con colores generalmente aceptan parámetros en las mismnas unidades cuando los valores van a cambiar, y los porcentajes que se manejan son absolutos, por lo que incrementar un 10% de un valor un 10% supone un incremento del 20% y no un 11%, y los valores estan dentro de los rangos permmitidos. Cuando se muestran los valores, también se muestran los formatos para aclarar lo que cada función ha realizado, además del código hexadecimal que normalmente se usa.</p>
 
 <h3>saturate</h3>
 
-<p>Increase the saturation of a color by an absolute amount.</p>
+<p>Incrementa la saturación de un color en una cantidad absoluta.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
-<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>color</code>: Un color.</li>
+<li><code>amount</code>: Un porcentaje 0-100%.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>saturate(hsl(90, 90%, 50%), 10%)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#80ff00 // hsl(90, 100%, 50%)
 </code></pre>
 
 <h3>desaturate</h3>
 
-<p>Decrease the saturation of a color by an absolute amount.</p>
+<p>Decrementa la saturación de un color en una cantidad absoluta.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
-<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>color</code>: Un color.</li>
+<li><code>amount</code>: Un porcentaje 0-100%.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>desaturate(hsl(90, 90%, 50%), 10%)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#80e51a // hsl(90, 80%, 50%)
 </code></pre>
 
 <h3>lighten</h3>
 
-<p>Increase the lightness of a color by an absolute amount.</p>
+<p>Incrementa la luminosidad de un color en una cantidad absoluta.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
-<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>color</code>: Un color.</li>
+<li><code>cantidad</code>: Un porcentaje 0-100%.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>lighten(hsl(90, 90%, 50%), 10%)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#99f53d // hsl(90, 90%, 60%)
 </code></pre>
 
 <h3>darken</h3>
 
-<p>Decrease the lightness of a color by an absolute amount.</p>
+<p>Decrementa la luminosidad de un color en una cantidad absoluta.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
-<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>color</code>: Un color.</li>
+<li><code>cantidad</code>: Un porcentaje 0-100%.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>darken(hsl(90, 90%, 50%), 10%)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#66c20a // hsl(90, 90%, 40%)
 </code></pre>
 
 <h3>fadein</h3>
 
-<p>Decrease the transparency (or increase the opacity) of a color, making it more opaque. Has no effect on opaque colours. To fade in the other direction use <code>fadeout</code>.</p>
+<p>Reduce la transparencia (o incrementa la opacidad) de un color, haciéndolo más opaco. No tiene efecto en colores opacos. El método <code>fadeout</code> realiza la función opuerta.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
-<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>color</code>: Un color.</li>
+<li><code>cantidad</code>: Un porcentaje 0-100%.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>fadein(hsla(90, 90%, 50%, 0.5), 10%)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>rgba(128, 242, 13, 0.6) // hsla(90, 90%, 50%, 0.6)
 </code></pre>
 
 <h3>fadeout</h3>
 
-<p>Increase the transparency (or decrease the opacity) of a color, making it less opaque. To fade in the other direction use <code>fadein</code>.</p>
+<p>Incrementa la transparencia (o reducir la opacidad) de un color, haciéndolo menos opaco. El método <code>fadein</code> realiza la función opuerta.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
-<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>color</code>: Un color.</li>
+<li><code>cantidad</code>: Un porcentaje 0-100%.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>fadeout(hsla(90, 90%, 50%, 0.5), 10%)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>rgba(128, 242, 13, 0.4) // hsla(90, 90%, 50%, 0.6)
 </code></pre>
 
 <h3>fade</h3>
 
-<p>Set the absolute transparency of a color. Can be applied to colors whether they already have an opacity value or not.</p>
+<p>Fija la transparencia absoluta de un color. Puede ser aplicado tanto a colores opacos como transparentes.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
-<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>color</code>: Un color.</li>
+<li><code>amount</code>: Un porcentaje 0-100%.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>fade(hsl(90, 90%, 50%), 10%)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>rgba(128, 242, 13, 0.1) //hsla(90, 90%, 50%, 0.1)
 </code></pre>
 
 <h3>spin</h3>
 
-<p>Rotate the hue angle of a color in either direction. While the angle range is 0-360, it applies a mod 360 operation, so you can pass in much larger (or negative) values and they will wrap around e.g. angles of 360 and 720 will produce the same result. Note that colours are passed through an RGB conversion, which doesn&rsquo;t retain hue value for greys (because hue has no meaning when there is no saturation), so make sure you apply functions in a way that preserves hue, for example don&rsquo;t do this:</p>
+<p>Rota el ángulo del tono de un color en cualquier dirección. Aunque el valor del ángulo es 0-360, se aplica un modulo de 360 al valor especificado, asi se puede usar valores más grandes (incluso negativos), por ejemplo, si se especifica un ángulo de 360 y 720 el resultado será el mismo. Nótese que los colores son pasados a través de una conversión RGB que no conserva el tono para colores grises (porque el tono no tiene sentido cuando no existe saturación), así puedes asegurarte de aplicar funciones de forma que el tono no sea modificado, por ejemplo prueba ésto:</p>
 
 <pre><code>@c: saturate(spin(#aaaaaa, 10), 10%);
 </code></pre>
 
-<p>Do this instead:</p>
+<p>Haz prueba esto:</p>
 
 <pre><code>@c: spin(saturate(#aaaaaa, 10%), 10);
 </code></pre>
 
-<p>Colors are always returned as RGB values, so applying <code>spin</code> to a grey value will do nothing.</p>
+<p>Los colores siempre son devueltos según el modelo RGB, asi que aplicar <code>spin</code> a un valor grís no servirá de nada.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
-<li><code>angle</code>: A number of degrees to rotate (+ or -).</li>
+<li><code>color</code>: Un color.</li>
+<li><code>angle</code>: Número de grados a rotar (+ or -).</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>spin(hsl(10, 90%, 50%), 20)
 spin(hsl(10, 90%, 50%), -20)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#f27f0d // hsl(30, 90%, 50%)
 #f20d33 // hsl(350, 90%, 50%)
@@ -2842,26 +2836,26 @@ spin(hsl(10, 90%, 50%), -20)
 
 <h3>mix</h3>
 
-<p>Mix two colors together in variable proportion. Opacity is included in the calculations.</p>
+<p>Mezcla dos colores en una proporción variable. Se incluye la opacidad en los cálculos.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color1</code>: A color object.</li>
-<li><code>color1</code>: A color object.</li>
-<li><code>weight</code>: Optional, a percentage balance point between the two colors, defaults to 50%.</li>
+<li><code>color1</code>: Un color.</li>
+<li><code>color1</code>: Un color.</li>
+<li><code>weight</code>: Opcional, un balance de porcentajes entre los dos colores, por defecto será el 50%.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>mix(#ff0000, #0000ff, 50%)
 mix(rgba(100,0,0,1.0), rgba(0,100,0,0.5), 50%)
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#800080
 rgba(75, 25, 0, 0.75)
@@ -2869,46 +2863,46 @@ rgba(75, 25, 0, 0.75)
 
 <h3>greyscale</h3>
 
-<p>Remove all saturation from a color; the same as calling <code>desaturate(@color, 100%)</code>. Because the saturation is not affected by hue, the resulting color mapping may be somewhat dull or muddy; <code>luma</code> may provide a better result as it extracts perceptual rather than linear brightness, for example <code>greyscale('#0000ff')</code> will return the same value as <code>greyscale('#00ff00')</code>, though they appear quite different in brightness to the human eye.</p>
+<p>Elimina la saturación de un color; similar al método <code>desaturate(@color, 100%)</code>. Al no verse afectada por el tono la saturación, el color resultante puede estar algo apagado o turbio; <code>luma</code> puede porpociona un mejor resultado cuando se extrae un valor porcentual en vez de un brillo linear, por ejemplo <code>greyscale('#0000ff')</code> devolverá el mismo valor que <code>greyscale('#00ff00')</code>, aunque puedan parecer bastante diferentes en brillo para el ojo humano.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object.</li>
+<li><code>color</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>greyscale(hsl(90, 90%, 50%))
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#808080 // hsl(90, 0%, 50%)
 </code></pre>
 
 <h3>contrast</h3>
 
-<p>Choose which of two colors provides the greatest contrast with another. This is useful for ensuring that a color is readable against a background, which is also useful for accessibility compliance. This function works the same way as the <a href="http://compass-style.org/reference/compass/utilities/color/contrast/">contrast function in Compass for SASS</a>. In accordance with <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>, colors are compared using their luma value, not their lightness.</p>
+<p>Elige cual de los dos colores proporciona un mayor contraste. Es útil cuando se quiere asegurar que un color es legible contra un fondo, lo cual es necesario para asegurar la accesibilidad de la página. Este método funciona de la misma manera que <a href="http://compass-style.org/reference/compass/utilities/color/contrast/">la función constrast en Compass para SASS</a>. De acuerdo con <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>, los colores son comparado usando su valor de luma, no por su luminosidad.</p>
 
-<p>The light and dark parameters can be supplied in either order - the function will calculate their luma values and assign light and dark appropriately.</p>
+<p>Los parámetros de luz y oscuridad pueden ser proporcionado en cualquier orden - la función calculará su valores de luma y asigna la luz y la oscuridad apropiadamente.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color</code>: A color object to compare against.</li>
-<li><code>dark</code>: optional - A designated dark color (defaults to black).</li>
-<li><code>light</code>: optional - A designated light color (defaults to white).</li>
-<li><code>threshold</code>: optional - A percentage 0-100% specifying where the transition from &ldquo;dark&rdquo; to &ldquo;light&rdquo; is (defaults to 43%). This is used to bias the contrast one way or another, for example to allow you to decide whether a 50% grey background should result in black or white text. You would generally set this lower for &lsquo;lighter&rsquo; palettes, higher for &lsquo;darker&rsquo; ones. Defaults to 43%.</li>
+<li><code>color</code>: Un color con el que comparar.</li>
+<li><code>oscuridad</code>: opcional - color que delimita la oscuridad (por defecto negro).</li>
+<li><code>luz</code>: opcional - color que delimita la luz (por defecto blanco).</li>
+<li><code>umbral</code>: opcional - Un porcentaje entre 0-100% especificando la transición de &ldquo;oscuridad&rdquo; a &ldquo;luz&rdquo; (por defecto 43%). Se usa para predisponer el contraste de una forma u otra, por ejemplo para permitirte decidir si el fondo gris 50% debería resultar en texto blanco y negro. Generalmente deberías fijarlo en el valor más bajo para los colores más claros y altos para los más oscuros. Por defecto al 43%.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>contrast(#aaaaaa)
 contrast(#222222, #101010)
@@ -2917,7 +2911,7 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,40%);
 contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 </code></pre>
 
-<p>Output:</p>
+<p>Salida:</p>
 
 <pre><code>#000000 // black
 #ffffff // white
@@ -2926,25 +2920,25 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 #ffffff // white
 </code></pre>
 
-<h2>Color blending</h2>
+<h2>Combinación de colores</h2>
 
-<p>These operations are <em>similar</em> as the blend modes found in image editors like Photoshop, Firework or GIMP, so you can use them to make your CSS colors match your images.</p>
+<p>Estas operaciones son <em>similares</em> a los modos de mezcla encontrados en editores de imágenes como Photoshop, Firework o GIMP, por lo que podrás usar estos métodos para hacer que tus colores CSS encajen con tus imágenes.</p>
 
 <h3>multiply</h3>
 
-<p>Multiply two colors. For each two colors their RGB channel are multiplied then divided by 255. The result is a darker color.</p>
+<p>Multiplica dos colores. Se multiplican los valores de los colores en el canal RGB y luego se divide el resultado entre 255. El resultado será un color más ocuro.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color1</code>: A color object to multiply against.</li>
-<li><code>color2</code>: A color object to multiply against.</li>
+<li><code>color1</code>: Un color.</li>
+<li><code>color2</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Examples:</p>
+<p>Ejemplos:</p>
 
 <pre><code>multiply(#ff6600, #000000);
 </code></pre>
@@ -3011,19 +3005,19 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 
 <h3>screen</h3>
 
-<p>Do the opposite effect from <code>multiply</code>. The result is a brighter color.</p>
+<p>Aplica el efecto contrario de <code>multiply</code>. El resultado es un color más brillante.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color1</code>: A color object to <em>screen</em> against.</li>
-<li><code>color2</code>: A color object to <em>screen</em> against.</li>
+<li><code>color1</code>: Un color.</li>
+<li><code>color2</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>screen(#ff6600, #000000);
 </code></pre>
@@ -3090,19 +3084,19 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 
 <h3>overlay</h3>
 
-<p>Combines the effect from both <code>multiply</code> and <code>screen</code>. Conditionally make light channels lighter and dark channels darker. <strong>Note</strong>: The results of the conditions are determined by the first color parameter.</p>
+<p>Combina el efecto de las funciones <code>multiply</code> y <code>screen</code>. Condicionalmente hace los canales claros más luminosos y los canales oscuros más oscuros. <strong>Nota</strong>: Los resultados de las condiciones están determinados por el primer color que se le pasa como parámetro.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color1</code>: A color object to overlay another. Also it is the determinant color to make the result lighter or darker.</li>
-<li><code>color2</code>: A color object to be <em>overlayed</em>.</li>
+<li><code>color1</code>: Un color con el que cubrir el otro. Tambien es el color determinante que hace que el color resultante sea mas claro o más oscuro.</li>
+<li><code>color2</code>: Un color para ser <em>cubierto</em>.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>overlay(#ff6600, #000000);
 </code></pre>
@@ -3169,19 +3163,19 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 
 <h3>softlight</h3>
 
-<p>Similar to <code>overlay</code> but avoid pure black resulting in pure black, and pure white resulting in pure white.</p>
+<p>Similar a <code>overlay</code> pero evita que el negro puro resulte negro puro, y el blanco puro resulte blanco puro.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color1</code>: A color object to <em>soft light</em> another.</li>
-<li><code>color2</code>: A color object to be <em>soft lighten</em>.</li>
+<li><code>color1</code>: Un color para <em>suavizar la luz</em> en el otro.</li>
+<li><code>color2</code>: Un color cuya <em>luz será suavizada</em>.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>softlight(#ff6600, #000000);
 </code></pre>
@@ -3248,19 +3242,19 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 
 <h3>hardlight</h3>
 
-<p>Similar to <code>overlay</code> but use the second color to detect light and dark channels instead of using the first color.</p>
+<p>Similar a <code>overlay</code> pero usa el segundo color para detectar los canales de luz y de oscuridad en vez del primer color.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color1</code>: A color object to overlay another.</li>
-<li><code>color2</code>: A color object to be <em>overlayed</em>. Also it is the determinant color to make the result lighter or darker.</li>
+<li><code>color1</code>: Un color para cubrir el otro.</li>
+<li><code>color2</code>: Un color que será <em>cubierto</em>. También es el que determina si el color resultante es más claro o más oscuro.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>hardlight(#ff6600, #000000);
 </code></pre>
@@ -3327,19 +3321,19 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 
 <h3>difference</h3>
 
-<p>Substracts the second color from the first color. The operation is made per RGB channels. The result is a darker color.</p>
+<p>Elimina el segundo color del primero. La operación se realiza usando los canales RGB. El resultado es un color más oscuro.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color1</code>: A color object to act as the minuend.</li>
-<li><code>color2</code>: A color object to act as the subtrahend.</li>
+<li><code>color1</code>: Un color que actua como minuendo.</li>
+<li><code>color2</code>: Un color que actua como substraendo.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>difference(#ff6600, #000000);
 </code></pre>
@@ -3406,19 +3400,19 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 
 <h3>exclusion</h3>
 
-<p>Similar effect to <code>difference</code> with lower contrast.</p>
+<p>Efecto similar a <code>difference</code> con un contraste más bajo.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color1</code>: A color object to act as the minuend.</li>
-<li><code>color2</code>: A color object to act as the subtrahend.</li>
+<li><code>color1</code>: Un color que actua como minuendo.</li>
+<li><code>color2</code>: Un color que actua como substraendo.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>exclusion(#ff6600, #000000);
 </code></pre>
@@ -3485,19 +3479,19 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 
 <h3>average</h3>
 
-<p>Compute the average of two colors. The operation is made per RGB channels.</p>
+<p>Calcula la media de los dos colores. La operación se realiza usando los canales RGB.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color1</code>: A color object.</li>
-<li><code>color2</code>: A color object.</li>
+<li><code>color1</code>: Un color.</li>
+<li><code>color2</code>: Un color.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>average(#ff6600, #000000);
 </code></pre>
@@ -3564,19 +3558,19 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 
 <h3>negation</h3>
 
-<p>Do the opposite effect from <code>difference</code>. The result is a brighter color. <strong>Note</strong>: The <em>opposite</em> effect doesn&rsquo;t mean the <em>inverted</em> effect as resulting to an <em>addition</em> operation.</p>
+<p>Tiene el efecto opuesto a <code>difference</code>. El resultado es un color más brillante. <strong>Nota</strong>: El efecto <em>opuesto</em> no significa el efecto <em>contrario</em> al resultado a una operación de <em>adición<em>.</p>
 
-<p>Parameters:</p>
+<p>Parámetros:</p>
 
 <ul>
-<li><code>color1</code>: A color object to act as the minuend.</li>
-<li><code>color2</code>: A color object to act as the subtrahend.</li>
+<li><code>color1</code>: Un color que actua como minuendo.</li>
+<li><code>color2</code>: Un color que actua como substraendo.</li>
 </ul>
 
 
-<p>Returns: <code>color</code></p>
+<p>Salida: <code>color</code></p>
 
-<p>Example:</p>
+<p>Ejemplo:</p>
 
 <pre><code>negation(#ff6600, #000000);
 </code></pre>
@@ -3646,30 +3640,32 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 
 <section id="translations" class="page page-dark">
   <div class="content">
-    <h1>In Other Languages</h1>
+    <h1>En otros idiomas</h1>
     <ul>
-      <li>Chinese: <a href="http://lesscss.net">http://lesscss.net</a></li>
-      <li>Danish: <a href="http://lesscss.dk">http://lesscss.dk</a></li>
-      <li>German: <a href="http://lesscss.de">http://lesscss.de</a></li>
-      <li>Indonesian: <a href="http://bertzzie.com/post/7/dokumentasi-less-bahasa-indonesia">http://bertzzie.com/post/7/dokumentasi-less-bahasa-indonesia</a></li>
-      <li>Japanese: <a href="http://less-ja.studiomohawk.com/">http://less-ja.studiomohawk.com/</a></li>
-      <li>Polish: <a href="http://ciembor.github.com/lesscss.org/">http://ciembor.github.com/lesscss.org/</a></li>
-      <li>Russian: <a href="http://lesscss.ru">http://lesscss.ru</a></li>
-      <li>Ukrainian: <a href="http://komaval.github.com/lesscss.org/">http://komaval.github.com/lesscss.org/</a></li>
-      <li>Belorussian: (Out of date) <a href="http://www.designcontest.com/show/lesscss-be">http://www.designcontest.com/show/lesscss-be</a></li>
-      <li>Portugese: (Out of date) <a href="http://lesscss.loopinfinito.com.br/">http://lesscss.loopinfinito.com.br/</a></li>
+      <li>Chino: <a href="http://lesscss.net">http://lesscss.net</a></li>
+      <li>Danés: <a href="http://lesscss.dk">http://lesscss.dk</a></li>
+      <li>Alemán: <a href="http://lesscss.de">http://lesscss.de</a></li>
+      <li>Indoneso: <a href="http://bertzzie.com/post/7/dokumentasi-less-bahasa-indonesia">http://bertzzie.com/post/7/dokumentasi-less-bahasa-indonesia</a></li>
+      <li>Japonés: <a href="http://less-ja.studiomohawk.com/">http://less-ja.studiomohawk.com/</a></li>
+      <li>Polaco: <a href="http://ciembor.github.com/lesscss.org/">http://ciembor.github.com/lesscss.org/</a></li>
+      <li>Ruso: <a href="http://lesscss.ru">http://lesscss.ru</a></li>
+      <li>Ucraniano: <a href="http://komaval.github.com/lesscss.org/">http://komaval.github.com/lesscss.org/</a></li>
+      <li>Bielorusso: (Desactualizado) <a href="http://www.designcontest.com/show/lesscss-be">http://www.designcontest.com/show/lesscss-be</a></li>
+      <li>Portugués: (Desactualizado) <a href="http://lesscss.loopinfinito.com.br/">http://lesscss.loopinfinito.com.br/</a></li>
     </ul>
   </div>
 </section>
 
 <section id="about" class="page page-dark">
   <div class="content">
-    <h1>About</h1>
+    <h1>Acerca</h1>
 
-<p>LESS was developed by <a href="http://cloudhead.io">Alexis Sellier</a>, more commonly known as <a href="http://cloudhead.io">cloudhead</a>. It is now mantained and extended by the LESS core team.</p>
+<p>LESS fue desarrollado por <a href="http://cloudhead.io">Alexis Sellier</a>, más conocido como <a href="http://cloudhead.io">cloudhead</a>. Ahora es mantenido y desarrollado por el equipo LESS.</p>
+
+<p>Traducción realiza por <a href="http://cloudhead.io">Adrián Matellanes</a>. Puedes seguir mi blog <a href="http://amatellanes.wordpress.com/">amatellanes.wordpress.com</a></p>
 
     <footer>
-        <p>powered by <a href="http://github.com/less/less.js">LESS</a></p>
+        <p>Haciendo uso de <a href="http://github.com/less/less.js">LESS</a></p>
         <p id="copy">Copyright &copy; Alexis Sellier 2010-2013</p>
     </footer>
   </div>

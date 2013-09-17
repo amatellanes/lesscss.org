@@ -83,7 +83,7 @@ strong { font-weight: bold; }
   height: 81px;
   left: -15px;
   top: 23px;
-  background: url(/lesscss.org//images/logo.png)  no-repeat;
+  background: url(https://raw.github.com/amatellanes/lesscss.org/gh-pages/images/logo.png)  no-repeat;
 }
 #navigation {
   position: absolute;

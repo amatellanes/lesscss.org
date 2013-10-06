@@ -370,16 +370,17 @@ h2 {
     less = {
         env: "development", // o "production"
         async: false,       // carga las importaciones de manera asíncrona
-        fileAsync: false,   // carga las importaciones de manera asíncrona cuando una página usa
-        //un protocolo de archivos
-        poll: 1000,         // cuando está activado el modo guarda, tiempo en ms entra consultas
+        fileAsync: false,   // carga las importaciones de manera asíncrona cuando 
+                            // una página usa un protocolo de archivos
+        poll: 1000,         // cuando está activado el modo guarda, tiempo en ms
+                            // entra consultas
         functions: {},      // funciones del usuario, especificadas por nombre
         dumpLineNumbers: "comments", // o "mediaQuery" o "all"
-        relativeUrls: false,// ajusta las urls para que sean relativas
-                            // si false, las urls se considerarán relativas respecto al
+        relativeUrls: false,// ajusta las urls para que sean relativas si false, 
+                            // las urls se considerarán relativas respecto al 
                             // fichero less de entrada
         rootpath: ":/a.com/"// una ruta para añadir al comienzo de cada una de las 
-        // urls
+                            // urls
     };
 &lt;/script&gt;
 &lt;script src="less.js" type="text/javascript"&gt;&lt;/script&gt;
@@ -1212,11 +1213,11 @@ h1 { color: green; }
 
 <p>Fichero principal que importa el fichero anterior library.less:</p>
 
-<pre><code>@import "library.less" screen and (max-width: 400px); // import with media queries
-@import "library.less"; // import without media queries
+<pre><code>@import "library.less" screen and (max-width: 400px); // importación con media queries
+@import "library.less"; // importación sin media queries
 
 .class {
-  color: @importedColor; // use imported variable
+  color: @importedColor; // uso de la variable importada
 }
 </code></pre>
 
@@ -1245,12 +1246,12 @@ h1 { color: green; }
 }
 </code></pre>
 
-<p>tanto las variables como reglas definidas en &ldquo;library.less&rdquo; han sido copiadas en la regla <code>pre</code>:</p>
+<p>tanto las variables como las reglas definidas en &ldquo;library.less&rdquo; han sido copiadas en la regla <code>pre</code>:</p>
 
 <pre><code>pre {
-  color: #ff0000; // variable defined in library.less was available
+  color: #ff0000; // variable definida en library.less
 }
-pre h1 { // ruleset defined in library.less was nested into 'pre' ruleset
+pre h1 { // regla definida en el fichero library.less fue incluida en la regla 'pre'
   color: green;
 }
 </code></pre>
@@ -1464,7 +1465,7 @@ fadeout(@color, 10%);                   // devuelve un color un 10% *más* trans
 fade(@color, 50%);                      // devuelve @color con una transparencia del 50%
 spin(@color, 10);                       // devuelve un color con 10 grados más de tono
 mix(@color1, @color2, [@weight: 50%]);  // devuelve la mezcla de @color1 y @color2
-greyscale(@color);                      // devuleve el color en la escala de grises, 100% desaturado
+greyscale(@color);                      // devuelve el color en la escala de grises, 100% desaturado
 contrast(@color1, [@darkcolor: black], [@lightcolor: white], [@threshold: 43%]); 
                                         // devuelve @darkcolor si @color1 es &gt; 43% de luma
                                         // en otro caso devuelve @lightcolor, ver notas
@@ -1489,8 +1490,7 @@ ispercentage(@percentageOrAnything);    // devuelve true si se le pasa una dimen
 isem(@emOrAnything);                    // devuelve true si se le pasa una dimensión en em
 isunit(@numberOrAnything, "rem");       // * devuelve true si el primer parámetro es un número y está en la unidad especificada
 
-// * Estas funciones solo están disponibles en la versión
- 1.4.0 beta
+// * Estas funciones solo están disponibles en la versión 1.4.0 beta
 </code></pre>
 
 <h1>Operaciones con strings</h1>
@@ -1864,9 +1864,9 @@ format-s-upper: "repetitions: 3 file: directory%2Ffile.less";
 
 <p>Ejemplo:</p>
 
-<pre><code>sin(1); // sine of 1 radian
-sin(1deg); // sine of 1 degree
-sin(1grad); // sine of 1 gradian
+<pre><code>sin(1); // seno de 1 radian
+sin(1deg); // seno de 1 grado
+sin(1grad); // seno de 1 gradian
 </code></pre>
 
 <p>Salida:</p>
@@ -2791,7 +2791,7 @@ color(~"#123")
 
 <p>Salida:</p>
 
-<pre><code>rgba(128, 242, 13, 0.1) //hsla(90, 90%, 50%, 0.1)
+<pre><code>rgba(128, 242, 13, 0.1) // hsla(90, 90%, 50%, 0.1)
 </code></pre>
 
 <h3>spin</h3>

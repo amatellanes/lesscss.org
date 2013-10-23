@@ -3616,43 +3616,43 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
   <div class="content">
     <h2>1.5.0</h2>
 
-<p>Under the hood less changed quite a bit (e.g. nodes no longer have a toCSS function), but we haven&rsquo;t made any breaking changes to the language. These are highlights, so please see the <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">changelog</a> for a full list of changes.</p>
+<p>Se han realizado unos cuantos cambios internos em less (por ejemplo, los nodos ya no tienen disponible la función toCSS), aunque no se han realizados cambios de ruptura en el lenguaje. A continuación vamos a ver algunos de los cambios realizados, mira el <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">registro de cambios</a> para consultar la lista completa de cambios.</p>
 
-<p>In usage, we do no longer support the yui-compress option due to a bug in ycssmin which was not getting fixed. We have switched to clean-css. If you use this option it will use clean-css and output a warning. The new option is called &ndash;clean-css.</p>
+<p>Respecto al uso, la opción yui-compress ya no es soportada debido a un bug en ycssmin que no ha sido solucionado. Se ha cambiado a clean-css. Si usas esta opción In usage, we do no longer support the yui-compress option due to a bug in ycssmin which was not getting fixed. We have switched to clean-css. Si usas esta opción, se usará clean-css y se imprimirá una advertencia. La nueva opción se llama &ndash;clean-css.</p>
 
-<p>We now have sourcemap support, meaning you can compile your less and then use developer tools to see where in your less file a particular piece of css comes from. You can enable this with the &ndash;source-map=filename option. There are other options, help is available if you run lessc without arguments. For instance, if you use the &ndash;source-map-less-inline &ndash;source-map-map-inline options then your sourcemap and all less files will be embedded into your generated css file.</p>
+<p>Ahora los <em>sourcemap</em> son soportados, lo que significa que puedes compilar tu código less y luego usar alguna herramienta para ver que parte de tu código less genera algún trozo específico del código css generado. Puedes habilitar esta opción con &ndash;source-map=filename. Hay otras opciones, help está disponible si ejecutas lessc sin argumentos. Por ejemplo, si usas las opciones &ndash;source-map-less-inline &ndash;source-map-map-inline, tu <em>sourcemap</em> y todos los ficheros less serán and all less files will be incluido en tu fichero css.</p>
 
-<p>You can now import your css files into the output by doing</p>
+<p>Ahora puedes importar tus ficheros css en la salido haciendo</p>
 
 <pre><code>@import (inline) "file.css";
 </code></pre>
 
-<p>This will not make selectors available to your less, it will just blindly copy that file into the output. It will not be compressed unless you use the clean-css option.</p>
+<p>Los selectores no estarán disponibles en tu código less, únicamente se copiaran los ficheros especificados en la salida. No será comprimida a menos que uses la opción clean-css.</p>
 
-<p>We have another import option - reference. This means that any variables or mixins or selectors will be imported, but never output.</p>
+<p>Otra nueva característica referente a las importaciones - reference. Se usa para importar cualquier variable, mixin o selector, pero dicho elemento no aparecerá en el código generado.</p>
 
-<p>e.g. if you have</p>
+<p>por ejemplo, si tenemos</p>
 
 <pre><code>.a {
   color: green;
 }
 </code></pre>
 
-<p>in a file and import it</p>
+<p>en un fichero y lo importamos</p>
 
 <pre><code>@import (reference) "file.less";
 </code></pre>
 
-<p>then that file will not be output, but you could do</p>
+<p>el fichero no aparecerá en el código, pero podrás hacer lo siguiente</p>
 
 <pre><code>.b {
   .a;
 }
 </code></pre>
 
-<p>and color: green; would be output inside the .b selector only. This also works with extends, so you can use extends to bring complex selector groups from a less or css file into your main file. One use-case might be to grab a set of selectors from bootstrap without including the whole library.</p>
+<p>y color: green; solo aparecerá únicamente en el selector .b. También se puede usar esta opción con el mecanismo de herencia, de tal manera que puedes crear grupos de selectores más complejos en un fichero less o css en tu fichero principal. Un ejemplo de uso podría ser coger un conjunto de selectores de bootstrap sin tener que incluir la librería completa.</p>
 
-<p>We now have property merging, meaning you can do this</p>
+<p>Ahora tenemos la posibilidad de mezclar, que quiere decir lo siguiente</p>
 
 <pre><code>.a() {
   transform+: rotateX(30deg);
@@ -3663,16 +3663,16 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 }
 </code></pre>
 
-<p>and you will get</p>
+<p>obtendrás</p>
 
 <pre><code>.b {
   transform: rotateY(20deg), rotateX(30deg);
 }
 </code></pre>
 
-<p>Note: although convention is to space seperate we believe all browsers support comma seperated for transform and other properties where this is useful are comma seperated, so the feature always comma seperates joined values.</p>
+<p>Nota: aunque por convención se debe dejar un espacio de separación, creemos que todos los navegadores soportan la separación por comas para transform y otras propiedades donde sea útil, así que ésta opción siempre separa los valores mezclados por comas.</p>
 
-<p>And lastly.. you can now put guards on css selectors. so instead of doing this</p>
+<p>Y finalmente... ya puedes usar expresiones condicionadas en selectores css, por lo que en vez de hacer lo siguiente</p>
 
 <pre><code>.a() when (@ie8 = true) {
    color: black;
@@ -3682,16 +3682,16 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 }
 </code></pre>
 
-<p>you can do this</p>
+<p>puedes hacer</p>
 
 <pre><code>.a when (@ie8 = true) {
     color: black;
 }
 </code></pre>
 
-<p>which does the same thing. Note: this doesn&rsquo;t work with multiple selectors because of ambiguities between the guard syntax and css.</p>
+<p>que hará lo mismo. Nota: esta característica no funcionará con selectores múltiples debido a la ambigüedad entre la sintaxis de la expresión condicionas y css.</p>
 
-<p>You may also use &amp; on its own to enclose multiple selectors e.g. instead of</p>
+<p>También puedes usar &amp; solo para encerrar varios selectores, por ejemplo, en vez de escribir</p>
 
 <pre><code>.ie8() when (@ie8 = true) {
    .b {
@@ -3702,7 +3702,7 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 .ie8();
 </code></pre>
 
-<p>you can write.</p>
+<p>puedes escribir.</p>
 
 <pre><code>&amp; when (@ie8 = true) {
    .b {
@@ -3720,7 +3720,7 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 
 <p><code>@import-once</code> ha sido eliminado y ahora es el comportamiento por defecto para <code>@import</code>.</p>
 
-<p><code>(~".myclass_@{index}") { ...</code> el selector de interpolación cae en desuso (<em>deprectaed</em>), se recomienda usar en su lugar <code>.myclass_@{index} { ...</code>. Funciona a partir de la versión 1.3.1.</p>
+<p><code>(~".myclass_@{index}") { ...</code> el selector de interpolación cae en desuso (<em>deprecated</em>), se recomienda usar en su lugar <code>.myclass_@{index} { ...</code>. Funciona a partir de la versión 1.3.1.</p>
 
 <p>Las versiones de los navegadores que ya no usen una versión de es5-shim.js - la versión que se usaba anteriormente era imprecisa y la nueva versión es significativamente más grande. Por favor incluye es-5 shim o usa únicamente navegadores modernos.</p>
 

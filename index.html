@@ -157,30 +157,6 @@ lessc styles.less styles.css
 
 <section id="synopsis" class="page page-dark">
   <div class="content">
-    <h2>1.4.0</h2>
-
-<p>La versión 1.4.0 ha sido lanzada. Esta versión incluye nuevas características tales como la herencia, la función data-uri y muchas más funciones matemáticas. Visita el <a href="https://github.com/cloudhead/less.js/blob/master/CHANGELOG.md">registro de cambios</a> para consultar la lista completa de cambios.</p>
-
-<p>Alguno de ellos son conocidos como <span class="warning">cambios de ruptura</span>.</p>
-
-<p><code>@import-once</code> ha sido eliminado y ahora es el comportamiento por defecto para <code>@import</code>.</p>
-
-<p><code>(~".myclass_@{index}") { ...</code> el selector de interpolación cae en desuso (<em>deprectaed</em>), se recomienda usar en su lugar <code>.myclass_@{index} { ...</code>. Funciona a partir de la versión 1.3.1.</p>
-
-<p>Las versiones de los navegadores que ya no usen una versión de es5-shim.js - la versión que se usaba anteriormente era imprecisa y la nueva versión es significativamente más grande. Por favor incluye es-5 shim o usa únicamente navegadores modernos.</p>
-
-<p>Se ha introducido un modo opcional denominado strictMath, donde los paréntesis son necesarios para realizar operaciones matemáticas, por ejemplo</p>
-
-<pre><code>(1 + 1)  // 2
-1 + 1    // 1+1
-</code></pre>
-
-<p>En la versión 1.4.0 esta opción está deshabilitada, pero estará habillitada por defecto en el futuro. Se recomienda que actualices tu código y habilites esta opción (&ndash;strict-math=on en línea de comando o strictMath: true en JavaScript). El código escrito entre paréntesis es compatible con versiones anteriores del compilador less.</p>
-
-<p>Tambien hemos añadido una opción para el uso estricto de unidades (strictUnits: true o strict-units=on) la cual obliga al compilador de less a valildar que las unidades usadas sean correctas (por ejemplo 4px/2px = 2, en cambio 2px y 4em/2px producirán un error). No hay planes para habilitar esta opción por defecto permanentemente, pero algunos usuarios lo encontraran útil para la detección de <em>errores</em>.</p>
-
-<p>Las unidades matemáticas están terminadas, <code>(4px * 3em) / 4px</code> solía ser igual a <code>3px</code> y ahora es igual a <code>3em</code>. No obstante, no se usarán números sin unidades a menos que el modo estricto esté activado.
-El selector interpolación y los cambios en las funciones matemáticas y en las unidades compilarán correctamente en less 1.3.3.</p>
 
 <h2>Variables</h2>
 

@@ -133,6 +133,7 @@ lessc styles.less styles.css
       <a href="#usage">uso</a>
       <a href="#docs" id="guide-link">lenguaje</a>
       <a href="#reference" id="guide-link">referencia</a>
+      <a href="#changes" id="changes-link">changes</a>
       <a href="https://github.com/less/less.js">fuente</a>
       <a href="#about">acerca de</a>
       <a href="http://less2css.org/" target="_blank">¡Pruébalo ahora!</a>
@@ -1442,6 +1443,8 @@ fadeout(@color, 10%);                   // devuelve un color un 10% *más* trans
 fade(@color, 50%);                      // devuelve @color con una transparencia del 50%
 spin(@color, 10);                       // devuelve un color con 10 grados más de tono
 mix(@color1, @color2, [@weight: 50%]);  // devuelve la mezcla de @color1 y @color2
+tint(@color, 10%);                      // devuelve un color mezclado con blanco al 10%
+shade(@color, 10%);                     // devuelve un color mezclado con negro al 10%
 greyscale(@color);                      // devuelve el color en la escala de grises, 100% desaturado
 contrast(@color1, [@darkcolor: black], [@lightcolor: white], [@threshold: 43%]); 
                                         // devuelve @darkcolor si @color1 es &gt; 43% de luma
@@ -3612,7 +3615,7 @@ contrast(hsl(90, 100%, 50%),#000000,#ffffff,60%);
 </section>
 
 <section id="changes" class="page page-dark">
-  <h1>Changes</h1>
+  <h1>Cambios</h1>
   <div class="content">
     <h2>1.5.0</h2>
 

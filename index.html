@@ -735,6 +735,63 @@ pre { .wrap }
 }
 </code></pre>
 
+<h2>Valores de retorno</h2>
+
+<p>Las variables definidas dentro de mixins actuan como valores de retorno y pueden ser llamadas. Las variables devueltas nunca sobrescribiran el valor de una variable local. Solo se copiaran las variables que no existen en ell ámbito local donde se realiza la llamada.</p>
+
+<p>A continuación un ejemplo:</p>
+
+<pre><code>.mixin() { 
+  @global: in-mixin;
+  @local: in-mixin; 
+  @definedOnlyInMixin: in-mixin; 
+}
+
+.class {
+  @local: localy-defined-value; //local variable - protegida (no se sobrescribe)
+  margin: @global @local @definedOnlyInMixin;
+  .mixin(); 
+}
+
+@global: outer-scope; // non-local variable - sobrescrita
+</code></pre>
+
+<p>Se obtiene:</p>
+
+<pre><code>.class {
+  margin: in-mixin localy-defined-value in-mixin;
+}
+</code></pre>
+
+<h2>Desbloqueando Mixins</h2>
+
+<p>Los mixins definidos dentro de otros mixins también puedes ser llamados. En esta ocasión, no existirá protección dentro del ámbito local, es decir, que los mixins desbloqueados sobrescribirán cualquier otro mixin que tenga el mismo nombre dentro del ámbito local.</p>
+
+<pre><code>.unlock(@value) { // mixin externo
+  .doSomething() { // mixin interno
+    declaration: @value;
+  }
+}
+
+.selector {
+  .unlock(5); // desbloquea el mixin doSomething - realizado en primer lugar
+  .doSomething(); //se copió el mixin interno y es usado
+}
+</code></pre>
+
+<p>Se obtiene:</p>
+
+<pre><code>.selector {
+  declaration: 5;
+}
+</code></pre>
+
+<p>Los mixins desbloqueados estarán disponibles después de que hayan sido desbloqueados. En el siguiente ejemplo se lanzaría un error sintáctico:</p>
+
+<pre><code>.doSomething(); // error sintáctico: mixin interno no está todavía disponible
+.unlock(5); // demasiado tarde
+</code></pre>
+
 <h2>La Palabra Clave !important</h2>
 
 <p>Puedes usar la palabra clave !important después de la llamada de un mixin para marcar todas sus reglas como importantes:</p>
@@ -1104,7 +1161,7 @@ height: (100% / 2 + @filler);
 
 <h2>Espacio de nombres</h2>
 
-<p>Algunas veces, puedes querer agrupar variables o mixins, por tener tu código organizado, o encapsulado. Puedes hacerlo de una manera bastante intuitiva en LESS—supongamos que quieres agrupar algunos mixins y variables bajo el selector <code>#bundle</code>, para luego reutilizarlo o distribuirlo:</p>
+<p>Algunas veces querrás agrupar variables o mixins, para tener tu código organizado o encapsulado. Puedes hacerlo de una manera bastante intuitiva en LESS—supongamos que quieres agrupar algunos mixins y variables bajo el selector <code>#bundle</code>, para luego reutilizarlo o distribuirlo:</p>
 
 <pre><code>#bundle {
   .button () {
@@ -1118,13 +1175,38 @@ height: (100% / 2 + @filler);
 }
 </code></pre>
 
-<p>Ahora si queremos usar la clase <code>.button</code> en nuestro selector <code>#header a</code>, podemos hacer:</p>
+<p>Ahora si queremos usar la clase <code>.button</code> <code>#header a</code>, podemos hacer:</p>
 
 <pre><code>#header a {
   color: orange;
   #bundle &gt; .button;
 }
 </code></pre>
+
+<p>Puedes &ldquo;desbloquear&rdquo; mixins anidados dentro de un espacio de nombres llamando al mixin propietario. Al actuar los mixins anidados como valores de retorno, todos estos mixins son copiados en el espacio de nombres y estarán disponibles para usarlos:</p>
+
+<pre><code>.unlock(@value) { // mixin externo
+  .doSomething() { // mixin interno (anidado)
+    declaration: @value;
+  }
+}
+
+#namespace() {
+  .unlock(5); // desbloquea mixin doSomething
+}
+
+#use-namespace { 
+  #namespace &gt; .doSomething(); // también funciona con espacios de nombres
+}
+</code></pre>
+
+<p>Obtenemos:</p>
+
+<pre><code>#use-namespace {
+  declaration: 5;
+}
+</code></pre>
+
 
 <h2>Ámbito</h2>
 

@@ -98,9 +98,9 @@
 <pre><code>@base: #f938ab;
 
 .box-shadow(@style, @c) when (iscolor(@c)) {
-  box-shadow:         @style @c;
   -webkit-box-shadow: @style @c;
   -moz-box-shadow:    @style @c;
+  box-shadow:         @style @c;
 }
 .box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
   .box-shadow(@style, rgba(0, 0, 0, @alpha));
@@ -186,9 +186,9 @@ h2 {
 </table>
 
 
-<h2>mixins</h2>
+<h2>Mixins</h2>
 
-<p>Los mixins permiten incluir todas las propiedades de una clase en otra clase diferente añadiendo simplemente el nombre de la clase como una propiedad más. El comportamiento es similar al de las variables pero con clases enteras. Los mixins pueden comportarse tambien como fuciones, y tomar argumentos, como se ve en el siguiente ejemplo.</p>
+<p>Los mixins permiten incluir todas las propiedades de una clase en otra diferente añadiendo simplemente el nombre de la clase como una propiedad más. El comportamiento es similar al de las variables pero con clases enteras. Los mixins pueden comportarse tambien como fuciones, y tomar argumentos, como se ve en el siguiente ejemplo.</p>
 
 <table class="code-example" cellpadding="0">
   <tr><td>
@@ -596,9 +596,9 @@ content: @@var;
 <p>LESS tiene un tipo especial de selector que puede ser mezclado como si fuera una regla, pudiendo además aceptar parámetros. A continuación un ejemplo sencillo:</p>
 
 <pre><code>.border-radius (@radius) {
-  border-radius: @radius;
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
+  border-radius: @radius;
 }
 </code></pre>
 
@@ -615,9 +615,9 @@ content: @@var;
 <p>Se pueden definir valores por defecto para los parámetros de los mixins paramétricos:</p>
 
 <pre><code>.border-radius (@radius: 5px) {
-  border-radius: @radius;
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
+  border-radius: @radius;
 }
 </code></pre>
 
@@ -634,8 +634,8 @@ content: @@var;
 
 <pre><code>.wrap () {
   text-wrap: wrap;
-  white-space: pre-wrap;
   white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
   word-wrap: break-word;
 }
 
@@ -646,8 +646,8 @@ pre { .wrap }
 
 <pre><code>pre {
   text-wrap: wrap;
-  white-space: pre-wrap;
   white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
   word-wrap: break-word;
 }
 </code></pre>
@@ -699,18 +699,19 @@ pre { .wrap }
 <p>La variable <code>@arguments</code> tiene un significado especial dentro de los mixins, contiene todos los argumentos que se les pasa cuando el mixin fue invocado. Es útil si no quieres trabajar con parámetros de manera individual:</p>
 
 <pre><code>.box-shadow (@x: 0; @y: 0; @blur: 1px; @color: #000) {
-  box-shadow: @arguments;
   -moz-box-shadow: @arguments;
   -webkit-box-shadow: @arguments;
+  box-shadow: @arguments;
 }
 .box-shadow(2px; 5px);
 </code></pre>
 
 <p>Cuyo resultado es:</p>
 
-<pre><code>  box-shadow: 2px 5px 1px #000;
+<pre><code>  
   -moz-box-shadow: 2px 5px 1px #000;
   -webkit-box-shadow: 2px 5px 1px #000;
+  box-shadow: 2px 5px 1px #000;
 </code></pre>
 
 <h3>Argumentos adelantados y la variable<code>@rest</code></h3>
@@ -1114,6 +1115,102 @@ pre { .wrap }
 </code></pre>
 
 <p>También puedes usar &amp; en mixins para referenciar un anidamiento que está fuera de la definición del mixin.</p>
+
+<h2>Herencia</h2>
+
+<p>A partir de la versión 1.4, LESS permite heredar un estilo. Se podría decir que la herencia es el mecanismo opuesto a un mixin. En vez de añadir todas las propiedades de una clase en otra, se usa el selector extend indicando una lista de todas las clases que se van a extender.</p>
+
+<p>La sintaxis para heredar se ha diseñado como una pseudo-clase CSS, y puede ser combinada con pseudo-clases siempre y cuando cualquier selector de herencia aparezca en último lugar.</p>
+
+<p>Por ejemplo:</p>
+
+<pre><code>div {
+    background-color: #e0e0e0;
+}
+p:extend(div) {
+    color: #101010;
+}
+</code></pre>
+
+<p>Obtendremos la siguiente salida:</p>
+
+<pre><code>div,
+p{
+    background-color: #e0e0e0;
+}
+p{
+    color: #101010;
+}
+</code></pre>
+
+<p>Como puedes ver, puede reducirse significativamente el código CSS generado en comparación con el uso de mixins.</p>
+
+<p>El selector extend puede usarse en la misma línea en la que se defina el selector de la clase, o puede ser anidado como en el ejemplo siguiente:</p>
+
+<pre><code>.parent {
+    font-size:12pt;
+}
+.child {
+    &amp;:extend(.parent);
+}
+</code></pre>
+
+<p>Por defecto, extend no incluye elementos anidados de los estilos heredados. Para conseguirlo, debes añadir <code>all</code> al selector en la expresión extend.</p>
+
+<p>Por ejemplo:</p>
+
+<pre><code>.a.b.test,
+.test.c {
+    color: orange;
+}
+.test {
+  &amp;:hover {
+    color: green;
+    }
+}
+.replacement :extend(.test) {
+}
+</code></pre>
+
+<p>Salida:</p>
+
+<pre><code>.a.b.test,
+.test.c {
+    color: orange;
+}
+.test:hover {
+    color: green;
+}
+</code></pre>
+
+<p>Pero esto:</p>
+
+<pre><code>.a.b.test,
+.test.c {
+    color: orange;
+}
+.test {
+  &amp;:hover {
+    color: green;
+    }
+}
+.replacement :extend(.test all) {
+}
+</code></pre>
+
+<p>Outputs:</p>
+
+<pre><code>.a.b.test,
+.test.c,
+.a.b.replacement,
+.replacement.c {
+  color: orange;
+}
+.test:hover,
+.replacement:hover {
+  color: green;
+}
+</code></pre>
 
 <h2>Operaciones</h2>
 
